@@ -803,6 +803,7 @@ Crea una orden médica.
   - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
   - **name**: Nombre del paciente.
   - **lastname**: Apellido del paciente.
+  - **email**: Correo del paciente
 
 ```json
 {
@@ -830,6 +831,7 @@ Crea una orden médica.
     "dni": "string",
     "name": "string",
     "lastname": "string",
+    "email": "string"
   }
 }
 ```
@@ -1006,6 +1008,7 @@ Crea un resultado médico utilizando la aplicación de origen especificada.
     - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
     - **name**: Nombre del paciente.
     - **lastname**: Apellido del paciente.
+    - **email**: Correo del paciente
 
 | Subject | Type            | Mandatory |
 | ------- | --------------- | --------- |
@@ -1065,6 +1068,7 @@ Los objetos que se requieren son los siguientes:
     "dni": "string",
     "name": "string",
     "lastname": "string",
+    "email": "string"
   }
 }
 ```
