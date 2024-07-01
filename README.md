@@ -18,10 +18,10 @@
    11. [`POST` /external/connection/exams/_{source}_](#endpoint-11)
    12. [`PATCH` /external/connection/exams/_{source}_/_{key}_](#endpoint-12)
    13. [`GET` /external/connection/medical/order/dni/_{dni}_](#endpoint-13)
-   14. [`GET` /external/connection/medical/order/dni/_{source}_/order/_{key}_](#endpoint-14)
+   14. [`GET` /external/connection/medical/order/_{source}_/_{key}_](#endpoint-14)
    15. [`POST` /external/connection/medical/order/_{source}_](#endpoint-15)
    16. [`PATCH` /external/connection/medical/order/_{source}_/_{key}_](#endpoint-16)
-   17. [`GET` /external/connection/medical/result/_{source}_/key/_{key}_](#endpoint-17)
+   17. [`GET` /external/connection/medical/result/_{source}_/_{key}_](#endpoint-17)
    18. [`POST` /external/connection/medical/result/_{source}_](#endpoint-18)
    19. [`PATCH` /external/connection/medical/result/_{source}_/file/_{key}_](#endpoint-19)
    20. [`POST` /medical/file](#endpoint-20)
@@ -697,7 +697,6 @@ Obtiene un arreglo de órdenes médicas pertenecientes a un paciente, utilizando
     {
       "id": "number",
       "process": "string",
-      "createAt": "date",
       "client": {
         "dni": "string",
         "fullname": "string"
@@ -705,7 +704,6 @@ Obtiene un arreglo de órdenes médicas pertenecientes a un paciente, utilizando
       "results": [
         {
           "id": "number",
-          "examName": "string",
           "hasFile": "boolean",
           "report": { "id": "number" } | null
         }
@@ -717,7 +715,7 @@ Obtiene un arreglo de órdenes médicas pertenecientes a un paciente, utilizando
 
 <div id='endpoint-14'/>
 
-### `GET` /external/connection/medical/order/dni/_{source}_/order/_{key}_
+### `GET` /external/connection/medical/order/_{source}_/_{key}_
 
 Obtiene una orden médica utilizando su identificador único y su pertenencia a la aplicación original.
 
@@ -746,7 +744,6 @@ Obtiene una orden médica utilizando su identificador único y su pertenencia a 
 {
   "id": "number",
   "process": "string",
-  "createAt": "date",
   "client": {
     "dni": "string",
     "fullname": "string"
@@ -754,7 +751,6 @@ Obtiene una orden médica utilizando su identificador único y su pertenencia a 
   "results": [
     {
       "id": "number",
-      "examName": "string",
       "hasFile": "boolean",
       "report": { "id": "number" } | null
     }
@@ -848,7 +844,6 @@ Crea una orden médica.
 {
   "id": "number",
   "process": "string",
-  "createAt": "date",
   "client": {
     "dni": "string",
     "fullname": "string"
@@ -856,7 +851,6 @@ Crea una orden médica.
   "results": [
     {
       "id": "number",
-      "examName": "string",
       "hasFile": true,
       "report": { "id": 0 } | null
     }
@@ -905,7 +899,6 @@ Actualiza una orden médica.
 {
   "id": "number",
   "process": "string",
-  "createAt": "date",
   "client": {
     "dni": "string",
     "fullname": "string"
@@ -913,7 +906,6 @@ Actualiza una orden médica.
   "results": [
     {
       "id": "number",
-      "examName": "string",
       "hasFile": true,
       "report": { "id": 0 } | null
     }
@@ -923,7 +915,7 @@ Actualiza una orden médica.
 
 <div id='endpoint-17'/>
 
-### `GET` /external/connection/medical/result/_{source}_/key/_{key}_
+### `GET` /external/connection/medical/result/_{source}_/_{key}_
 
 Obtiene un resultado médico utilizando su identificador único y su pertenencia a la aplicación original.
 
@@ -951,7 +943,6 @@ Obtiene un resultado médico utilizando su identificador único y su pertenencia
 ```json
 {
   "id": "number",
-  "examName": "string",
   "hasFile": true,
   "report": { "id": 0 } | null
 }
@@ -1084,7 +1075,6 @@ Los objetos que se requieren son los siguientes:
 ```json
 {
   "id": "number",
-  "examName": "string",
   "hasFile": "boolean",
   "report": { "id": 0 } | null
 }
@@ -1128,7 +1118,6 @@ Permite subir un archivo PDF si no fue proporcionado al momento de crear el resu
 ```json
 {
   "id": "number",
-  "examName": "string",
   "hasFile": true,
   "report": { "id": 0 } | null
 }
