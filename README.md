@@ -3,29 +3,20 @@
 ## Table of contents
 
 1. [Introducción](#introduction)
-2. [Autenticación](#authentication)
-3. [Endpoints](#endpoints)
-   1. [`POST` /external/connection/corporative/groups/_{source}_](#endpoint-1)
-   2. [`PATCH` /external/connection/corporative/groups/_{source}_/_{key}_](#endpoint-2)
-   3. [`POST` /external/connection/company/_{source}_](#endpoint-3)
-   4. [`PATCH` /external/connection/corporative/groups/_{source}_/_{key}_](#endpoint-4)
-   5. [`POST` /external/connection/branch/_{source}_](#endpoint-5)
-   6. [`PATCH` /external/connection/branch/_{source}_/_{key}_](#endpoint-6)
-   7. [`POST` /external/connection/patients](#endpoint-7)
-   8. [`PATCH` /external/connection/patients/_{dni}_](#endpoint-8)
-   9. [`POST` /external/connection/doctor](#endpoint-9)
-   10. [`PATCH` /external/connection/doctor/_{dni}_](#endpoint-10)
-   11. [`POST` /external/connection/exams/_{source}_](#endpoint-11)
-   12. [`PATCH` /external/connection/exams/_{source}_/_{key}_](#endpoint-12)
-   13. [`GET` /external/connection/medical/order/dni/_{dni}_](#endpoint-13)
-   14. [`GET` /external/connection/medical/order/_{source}_/_{key}_](#endpoint-14)
-   15. [`POST` /external/connection/medical/order/_{source}_](#endpoint-15)
-   16. [`PATCH` /external/connection/medical/order/_{source}_/_{key}_](#endpoint-16)
-   17. [`GET` /external/connection/medical/result/_{source}_/_{key}_](#endpoint-17)
-   18. [`POST` /external/connection/medical/result/_{source}_](#endpoint-18)
-   19. [`PATCH` /external/connection/medical/result/_{source}_/file/_{key}_](#endpoint-19)
-   20. [`POST` /medical/file](#endpoint-20)
-   21. [`POST` /medical/file/multiple](#endpoint-21)
+    1. [Autenticación](#authentication)
+2. [Endpoints](#endpoints)
+    1. [Grupos Corporativos](#enpoint-corporative-groups)
+    2. [Empresas](#endpoint-companies)
+    3. [Sucursales](#endpoint-branch)
+    4. [Puestos de trabajo](#endpoint-job-position)
+    5. [Pacientes](#endpoint-patient)
+    6. [Medicos](#endpoint-doctor)
+    7. [Examenes](#endpoint-exams)
+    7. [Tipo de examen](#endpoint-exam-types)
+    8. [Ordenes médicas](#endpoint-medical-order)
+    9. [Resultados médicos](#endpoint-medical-result)
+    10. [Archivos](#endpoint-medical-files)
+3. [Ciudades](#cities)
 
 <div id='introduction'/>
 
@@ -37,7 +28,7 @@ Los endpoints expuestos permiten el acceso, creación y modificación de informa
 
 <div id='authentication'/>
 
-## Autenticación
+### Autenticación
 
 Para el consumo del API se requiere una API-KEY. Esta llave será proporcionada por `Omega Sistema de Reportería Médica` y deberá ser usada antes de realizar cualquier petición a los endpoints. La llave deberá ser colocada en la cabecera de la petición con el nombre de `x-api-key`.
 
@@ -50,662 +41,58 @@ Los endpoints presentes identifican un URL PARAM nombrado como `source`. Este re
 - Aplicación Ejemplo: _`<api>/aplicacion-ejemplo`_
 - Aplicación: _`<api>/aplicacion`_
 
-<div id='endpoint-1'/>
+<div id='enpoint-corporative-groups'/>
 
-### `POST` /external/connection/corporative/groups/_{source}_
+### Grupos Corporativos
+
+#### `POST` /external/connection/corporative/groups/_{source}_/_{key}_
 
 Crea un grupo corporativo. Este grupo podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
 
-#### Request Headers
+##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `application/json`
 - `Accept`: `application/json`
 
-#### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-
-#### Request Body
-
-- **name**: Nombre del grupo corporativo. Este es único.
-- **key**: Identificador único.
-
-```json
-{
-  "name": "string",
-  "key": "string"
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 201 Created
-- 409 Conflict
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "name": "string"
-}
-```
-
-<div id='endpoint-2'/>
-
-### `PATCH` /external/connection/corporative/groups/_{source}_/_{key}_
-
-Actualiza un grupo corporativo. Este grupo podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
+##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
 - `key`: Identificador único.
   - **Type**: _String_
 
-#### Request Body
+##### Request Body
 
 - **name**: Nombre del grupo corporativo. Este es único.
 
-```json
+```typescript
 {
-  "name": "string"
+  name: string;
 }
 ```
 
-#### Response
+##### Response
 
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
+```typescript
 {
-  "id": "number",
-  "name": "string"
-}
-```
-
-<div id='endpoint-3'/>
-
-### `POST` /external/connection/company/_{source}_
-
-Crea una empresa. Esta podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-
-#### Request Body
-
-- **key**: Identificador único.
-- **ruc**: RUC de la empresa. Este debe ser único.
-- **name**: Nombre de la empresa. Este es único.
-- **address**: Dirección de la empresa.
-- **phone**: Teléfono de la empresa.
-- **corporativeGroup**:
-  - **name**: Nombre del grupo corporativo. Este es único.
-  - **key**: Identificador único.
-
-```json
-{
-  "key": "string",
-  "ruc": "string",
-  "name": "string",
-  "address": "string",
-  "phone": "string",
-  "corporativeGroup": {
-    "name": "string",
-    "key": "string"
-  }
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 201 Created
-- 409 Conflict
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "ruc": "string",
-  "name": "string",
-  "address": "string",
-  "phone": "string"
-}
-```
-
-<div id='endpoint-4'/>
-
-### `PATCH` /external/connection/corporative/groups/_{source}_/_{key}_
-
-Actualiza una empresa. Esta empresa podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-- `key`: Identificador único.
-  - **Type**: _String_
-
-#### Request Body
-
-- **name**: Nombre de la empresa. Este es único.
-- **address**: Dirección de la empresa.
-- **phone**: Teléfono de la empresa.
-
-```json
-{
-  "name": "string",
-  "address": "string",
-  "phone": "string"
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "ruc": "string",
-  "name": "string",
-  "address": "string",
-  "phone": "string"
-}
-```
-
-<div id='endpoint-5'/>
-
-### `POST` /external/connection/branch/_{source}_
-
-Crea una sucursal. Esta podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-
-#### Request Body
-
-- **key**: Identificador único.
-- **name**: Nombre de la sucursal.
-- **city**: Ciudad. Esta puede ser una de las indicadas al final del documento.
-- **company**:
-  - **key**: Identificador único.
-  - **ruc**: RUC de la empresa. Este debe ser único.
-  - **name**: Nombre de la empresa. Este es único.
-  - **address**: Dirección de la empresa.
-  - **phone**: Teléfono de la empresa.
-  - **corporativeGroup**:
-    - **name**: Nombre del grupo corporativo. Este es único.
-    - **key**: Identificador único.
-
-```json
-{
-  "key": "string",
-  "name": "string",
-  "city": "string",
-  "company": {
-    "key": "string",
-    "ruc": "string",
-    "name": "string",
-    "address": "string",
-    "phone": "string",
-    "corporativeGroup": {
-      "name": "string",
-      "key": "string"
-    }
-  }
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 201 Created
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "name": "string",
-  "city": {
-    "name": "string"
-  }
-}
-```
-
-<div id='endpoint-6'/>
-
-### `PATCH` /external/connection/branch/_{source}_/_{key}_
-
-Actualiza una sucursal. Esta sucursal podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-- `key`: Identificador único.
-  - **Type**: _String_
-
-#### Request Body
-
-- **name**: Nombre de la sucursal. Este es único.
-
-```json
-{
-  "name": "string"
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "name": "string",
-  "city": {
-    "name": "string"
-  }
-}
-```
-
-<div id='endpoint-7'/>
-
-### `POST` /external/connection/patients
-
-Crea un paciente.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### Request Body
-
-- **gender**: Género del paciente. Debe colocarse `male` o `female`.
-- **birthday**: Fecha de cumpleaños del paciente. Formato: `YYYY-MM-DD`.
-- **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
-- **name**: Nombre del paciente.
-- **lastname**: Apellido del paciente.
-
-```json
-{
-  "gender": "male" | "female",
-  "birthday": "date",
-  "dni": "string",
-  "name": "string",
-  "lastname": "string",
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 201 Created
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "gender": "male" | "female",
-  "birthday": "date",
-  "user": {
-    "id": "number",
-    "dni": "string",
-    "name": "string",
-    "lastname": "string"
-  }
-}
-```
-
-<div id='endpoint-8'/>
-
-### `PATCH` /external/connection/patients/_{dni}_
-
-Actualiza un paciente.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `dni`: El DNI del paciente.
-  - **Type**: _String_
-
-#### Request Body
-
-- **gender**: Género del paciente. Debe colocarse `male` o `female`.
-- **birthday**: Fecha de cumpleaños del paciente. Formato: `YYYY-MM-DD`.
-- **name**: Nombre del paciente.
-- **lastname**: Apellido del paciente.
-
-```json
-{
-  "gender": "male" | "female",
-  "birthday": "date",
-  "name": "string",
-  "lastname": "string",
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "gender": "male" | "female",
-  "birthday": "date",
-  "user": {
-    "id": "number",
-    "dni": "string",
-    "name": "string",
-    "lastname": "string"
-  }
-}
-```
-
-<div id='endpoint-9'/>
-
-### `POST` /external/connection/doctor
-
-Crea un doctor.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### Request Body
-
-- **dni**: DNI del médico. Debe tener una longitud de 10 caracteres y ser único.
-- **name**: Nombre del médico.
-- **lastname**: Apellido del médico.
-- **email**: Correo electrónico del médico.
-
-```json
-{
-  "dni": "string",
-  "name": "string",
-  "lastname": "string",
-  "email": "string"
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 201 Created
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "user": {
-    "id": "number",
-    "dni": "string",
-    "name": "string",
-    "lastname": "string",
-    "email": "string"
-  }
-}
-```
-
-<div id='endpoint-10'/>
-
-### `PATCH` /external/connection/doctor/_{dni}_
-
-Actualiza un medico.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `dni`: El DNI del médico.
-  - **Type**: _String_
-
-#### Request Body
-
-- **name**: Nombre del médico.
-- **lastname**: Apellido del médico.
-- **email**: Correo electrónico del médico.
-
-```json
-{
-  "gender": "male" | "female",
-  "birthday": "date",
-  "dni": "string",
-  "name": "string",
-  "lastname": "string",
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "gender": "male" | "female",
-  "birthday": "date",
-  "user": {
-    "id": "number",
-    "dni": "string",
-    "name": "string",
-    "lastname": "string"
-  }
-}
-```
-
-<div id='endpoint-11'/>
-
-### `POST` /external/connection/exams/_{source}_
-
-Crea un examen de laboratorio. Este podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-
-#### Request Body
-
-- **key**: Identificador único.
-- **name**: Nombre del examen médico. Este es único.
-
-```json
-{
-  "key": "string",
-  "name": "string"
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 201 Created
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "name": "string"
-}
-```
-
-<div id='endpoint-12'/>
-
-### `PATCH` /external/connection/exams/_{source}_/_{key}_
-
-Actualiza un examen de laboratorio. Este podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-- `key`: Identificador único.
-  - **Type**: _String_
-
-#### Request Body
-
-- **name**: Nombre actualizado del examen médico. Debe ser único.
-
-```json
-{
-  "name": "string"
-}
-```
-
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
-{
-  "id": "number",
-  "name": "string"
-}
-```
-
-<div id='endpoint-13'/>
-
-### `GET` /external/connection/medical/order/dni/_{dni}_
-
-Obtiene un arreglo de órdenes médicas pertenecientes a un paciente, utilizando su DNI.
-
-#### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-#### URL Parameters
-
-- `dni`: El DNI del paciente.
-  - **Type**: _String_
-
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
-{
-  "orders": [
+  id: number,
+  name: string,
+  companies: [
     {
-      "id": "number",
-      "process": "string",
-      "client": {
-        "dni": "string",
-        "fullname": "string"
-      },
-      "results": [
+      id: number,
+      ruc: string,
+      name: string,
+      address: string,
+      phone: string,
+      branches: [
         {
-          "id": "number",
-          "hasFile": "boolean",
-          "report": { "id": "number" } | null
+          id: number,
+          name: string,
+          city: {
+            id: number,
+            name: string
+          }
         }
       ]
     }
@@ -713,393 +100,1208 @@ Obtiene un arreglo de órdenes médicas pertenecientes a un paciente, utilizando
 }
 ```
 
-<div id='endpoint-14'/>
+#### `PATCH` /external/connection/corporative/groups/_{source}_/_{key}_
 
-### `GET` /external/connection/medical/order/_{source}_/_{key}_
+Actualiza un grupo corporativo. Este grupo podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
 
-Obtiene una orden médica utilizando su identificador único y su pertenencia a la aplicación original.
-
-#### Request Headers
+##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `application/json`
 - `Accept`: `application/json`
 
-#### URL Parameters
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre del grupo corporativo. Este es único.
+
+```typescript
+{
+  name: string;
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  name: string,
+  companies: [
+    {
+      id: number,
+      ruc: string,
+      name: string,
+      address: string,
+      phone: string,
+      branches: [
+        {
+          id: number,
+          name: string,
+          city: {
+            id: number,
+            name: string
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+<div id='endpoint-companies'/>
+
+### Empresas
+
+#### `POST` /external/connection/company/_{source}_/_{key}_
+
+Crea una empresa. Esta podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **corporativeGroup**:
+  - **key**: Identificador único del grupo corporativo.
+  - **name**: Nombre del grupo corporativo. Este es único.
+- **ruc**: RUC de la empresa. Este debe ser único.
+- **name**: Nombre de la empresa. Este es único.
+- **address**: Dirección de la empresa.
+- **phone**: Teléfono de la empresa.
+
+```typescript
+{
+  corporativeGroup: {
+    key: string,
+    name: string
+  },
+  ruc: string,
+  name: string,
+  address: string,
+  phone: string
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  ruc: string,
+  name: string,
+  address: string,
+  phone: string,
+  branches: [
+    {
+      id: number,
+      name: string,
+      city: {
+        id: number,
+        name: string
+      }
+    }
+  ]
+}
+```
+
+#### `PATCH` /external/connection/company/_{source}_/_{key}_
+
+Actualiza una empresa. Esta empresa podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre de la empresa. Este es único.
+- **address**: Dirección de la empresa.
+- **phone**: Teléfono de la empresa.
+
+```typescript
+{
+  name: string,
+  address: string,
+  phone: string
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  ruc: string,
+  name: string,
+  address: string,
+  phone: string,
+  branches: [
+    {
+      id: number,
+      name: string,
+      city: {
+        id: number,
+        name: string
+      }
+    }
+  ]
+}
+```
+
+<div id='endpoint-branch'/>
+
+### Sucursal
+
+#### `POST` /external/connection/branch/_{source}_/_{key}_
+
+Crea una sucursal. Esta podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **company**:
+  - **key**: Identificador único.
+  - **corporativeGroup**:
+    - **key**: Identificador único.
+    - **name**: Nombre del grupo corporativo. Este es único.
+  - **ruc**: RUC de la empresa. Este debe ser único.
+  - **name**: Nombre de la empresa. Este es único.
+  - **address**: Dirección de la empresa.
+  - **phone**: Teléfono de la empresa.
+- **name**: Nombre de la sucursal.
+- **city**: Ciudad. Esta puede ser una de las indicadas al final del documento.
+
+```typescript
+{
+  company: {
+    key: string,
+    corporativeGroup: {
+      key: string,
+      name: string
+    },
+    ruc: string,
+    name: string,
+    address: string,
+    phone: string
+  },
+  name: string,
+  city: string
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  name: string,
+  city: {
+    id: number,
+    name: string
+  }
+}
+```
+
+#### `PATCH` /external/connection/branch/_{source}_/_{key}_
+
+Actualiza una sucursal. Esta sucursal podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre de la sucursal. Este es único.
+
+```typescript
+{
+  name: string;
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  name: string,
+  city: {
+    id: number,
+    name: string
+  }
+}
+```
+<div id='endpoint-job-position'/>
+
+### Puestos de trabajo
+
+#### `POST` /external/connection/job/position/_{source}_/_{key}_
+
+Crea un puesto de trabajo. Esta podrá ser utilizada para la creación y gestión de puestos de trabajo.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre del puesto de trabajo. Este es único.
+
+```typescript
+{
+  name: string;
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  name: string
+}
+```
+
+#### `PATCH` /external/connection/job/position/_{source}_/_{key}_
+
+Actualiza una posicion de trabajo.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre de la posicion de trabajo. Este es único.
+
+```typescript
+{
+  name: string;
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  name: string
+}
+```
+
+<div id='endpoint-patient'/>
+
+### Pacientes
+
+#### `POST` /external/connection/patients
+
+Crea un paciente.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### Request Body
+
+- **gender**: Género del paciente. Debe colocarse `male` o `female`.
+- **birthday**: Fecha de cumpleaños del paciente. Formato: `YYYY-MM-DD`.
+- **name**: Nombre del paciente.
+- **lastname**: Apellido del paciente.
+- **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
+- **lastname**: Apellido del paciente.
+- **role**: Role del paciente (Solo aplica para eeq).
+
+```typescript
+{
+  gender: "male" | "female",
+  birthday: Date,
+  name: string,
+  lastname: string,
+  dni: string,
+  role: string | undefined
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  gender: "male" | "female",
+  birthday: Date,
+  user: number,
+  dni: string,
+  name: string,
+  lastname: string
+}
+```
+
+#### `PATCH` /external/connection/patients/_{dni}_
+
+Actualiza un paciente.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `dni`: El DNI del paciente.
+  - **Type**: _String_
+
+##### Request Body
+
+- **gender**: Género del paciente. Debe colocarse `male` o `female`.
+- **birthday**: Fecha de cumpleaños del paciente. Formato: `YYYY-MM-DD`.
+- **name**: Nombre del paciente.
+- **lastname**: Apellido del paciente.
+
+```typescript
+{
+  gender: "male" | "female",
+  birthday: Date,
+  name: string,
+  lastname: string
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  gender: "male" | "female",
+  birthday: Date,
+  user: number,
+  dni: string,
+  name: string,
+  lastname: string
+}
+```
+<div id='endpoint-doctor'/>
+
+### Medicos
+
+#### `POST` /external/connection/doctor
+
+Crea un doctor.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### Request Body
+
+- **name**: Nombre del médico.
+- **lastname**: Apellido del médico.
+- **email**: Correo electrónico del médico.
+- **dni**: DNI del médico. Debe tener una longitud de 10 caracteres y ser único.
+
+```typescript
+{
+  name: string,
+  lastname: string,
+  email: string,
+  dni: string,
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  dni: string,
+  email: string,
+  name: string,
+  lastname: string,
+  hasCredential: boolean,
+  user: number,
+  hasFile: boolean
+}
+```
+
+#### `PATCH` /external/connection/doctor/_{dni}_
+
+Actualiza un medico.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `dni`: El DNI del médico.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre del médico.
+- **lastname**: Apellido del médico.
+
+```typescript
+{
+  name: string,
+  lastname: string,
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  dni: string,
+  email: string,
+  name: string,
+  lastname: string,
+  hasCredential: boolean,
+  user: number,
+  hasFile: boolean
+}
+```
+<div id='endpoint-exams'/>
+
+### Examenes
+
+#### `POST` /external/connection/exams/_{source}_/_{key}_
+
+Crea un examen de laboratorio. Este podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre del examen médico. Este es único.
+- **type**:
+  - **key**: Identificador único del tipo de examen.
+  - **name**: Nombre de un tipo de examen. Este es único.
+- **subtype**:
+  - **key**: Identificador único del subtipo de examen.
+  - **name**: Nombre de un subtipo de examen médico. Este es único.
+
+```typescript
+{
+  name: string,
+  type: {
+    key: string,
+    name: string
+  },
+  subtype: {
+    key: string,
+    name: string,
+  }
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  name: string
+}
+```
+
+#### `PATCH` /external/connection/exams/_{source}_/_{key}_
+
+Actualiza un examen de laboratorio. Este podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único.
+  - **Type**: _String_
+
+##### Request Body
+
+- **name**: Nombre actualizado del examen médico. Debe ser único.
+
+```typescript
+{
+  name: string;
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  name: string
+}
+```
+
+<div id='endpoint-exam-types'/>
+
+### Tipos de examenes
+
+<div id='endpoint-medical-order'/>
+
+### Ordenes médicas
+
+#### `GET` /external/connection/medical/orders/dni/_{dni}_
+
+Obtiene un arreglo de órdenes médicas pertenecientes a un paciente, utilizando su DNI.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `dni`: El DNI del paciente.
+  - **Type**: _String_
+
+##### Response
+
+```typescript
+{
+  data: [
+    {
+      id: number,
+      process: string,
+      createAt: Date,
+      mailStatus: boolean,
+      orderStatus: string,
+      client: {
+        dni: string,
+        name: string,
+        lastname: string,
+        managementId: number,
+        areaId: number,
+        email: [
+          {
+            id: number,
+            email: string,
+            default: boolean,
+          },
+        ],
+      },
+      results: [
+        {
+          id: number,
+          examType: string,
+          examSubtype: string,
+          examName: string,
+          hasFile: boolean,
+          diseases: [
+            {
+              id: number,
+              diseaseId: string,
+              diseaseName: string,
+              diseaseGroupId: string,
+              diseaseGroupName: string,
+              diseaseCommentary: string,
+            },
+          ],
+          report: {
+            id: number,
+            content: string,
+            hasFile: boolean,
+          },
+        },
+      ],
+    },
+  ];
+}
+```
+
+#### `GET` /external/connection/medical/orders/_{source}_/_{key}_
+
+Obtiene una orden médica utilizando su identificador único y su pertenencia a la aplicación original.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
 - `key`: Identificador único de la orden médica.
   - **Type**: _String_
 
-#### Response
+##### Response
 
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
+```typescript
 {
-  "id": "number",
-  "process": "string",
-  "client": {
-    "dni": "string",
-    "fullname": "string"
+  id: number,
+  process: string,
+  createAt: Date,
+  mailStatus: boolean,
+  orderStatus: string,
+  client: {
+    dni: string,
+    name: string,
+    lastname: string,
+    managementId: number,
+    areaId: number,
+    email: [
+      {
+        id: number,
+        email: string,
+        default: boolean
+      }
+    ]
   },
-  "results": [
+  results: [
     {
-      "id": "number",
-      "hasFile": "boolean",
-      "report": { "id": "number" } | null
+      id: number,
+      examType: string,
+      examSubtype: string,
+      examName: string,
+      hasFile: boolean,
+      diseases: [
+        {
+          id: number,
+          diseaseId: string,
+          diseaseName: string,
+          diseaseGroupId: string,
+          diseaseGroupName: string,
+          diseaseCommentary: string
+        }
+      ],
+      report: {
+        id: number,
+        content: string,
+        hasFile: boolean
+      }
     }
   ]
 }
 ```
 
-<div id='endpoint-15'/>
-
-### `POST` /external/connection/medical/order/_{source}_
+#### `POST` /external/connection/medical/orders/_{source}_/_{key}_
 
 Crea una orden médica.
 
-#### Request Headers
+##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `application/json`
 - `Accept`: `application/json`
 
-#### URL Parameters
+##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
 
-#### Request Body
+##### Request Body
 
-- **key**: Identificador único de la orden médica.
-- **process**: Nombre del proceso médico.
 - **branch**:
-  - **key**: Identificador único de la sucursal.
-  - **name**: Nombre de la sucursal.
-  - **city**: Ciudad de la sucursal.
   - **company**:
     - **key**: Identificador único de la empresa.
+    - **corporativeGroup**:
+      - **key**: Identificador único del grupo corporativo.
+      - **name**: Nombre del grupo corporativo. Debe ser único.
     - **ruc**: RUC de la empresa. Debe ser único.
     - **name**: Nombre de la empresa. Debe ser único.
     - **address**: Dirección de la empresa.
     - **phone**: Teléfono de la empresa.
-    - **corporativeGroup**:
-      - **name**: Nombre del grupo corporativo. Debe ser único.
-      - **key**: Identificador único del grupo corporativo.
+  - **name**: Nombre de la sucursal.
+  - **city**: Ciudad de la sucursal. Debe ser una de las ciudades especificadas al final del documento.
+  - **key**: Identificador único de la sucursal.
+- **jobPosition**: 
+  - **key**: Identificador único del puesto de trabajo.
+  - **name**: Nombre del puesto de trabajo.
 - **patient**:
-  - **key**: Identificador único del paciente.
   - **gender**: Género del paciente. Debe ser `male` o `female`.
   - **birthday**: Fecha de cumpleaños del paciente.
-  - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
   - **name**: Nombre del paciente.
   - **lastname**: Apellido del paciente.
+  - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
   - **email**: Correo del paciente
+  - **role**: Role del paciente (Solo aplica para eeq).
+- **process**: Nombre del proceso médico.
 
-```json
+```typescript
 {
-  "key": "string",
-  "process": "string",
-  "branch": {
-    "key": "string",
-    "name": "string",
-    "city": "string",
-    "company": {
-      "key": "string",
-      "ruc": "string",
-      "name": "string",
-      "address": "string",
-      "phone": "string",
-      "corporativeGroup": {
-        "name": "string",
-        "key": "string"
-      }
-    }
+  branch: {
+    company: {
+      key: string,
+      corporativeGroup: {
+        key: string,
+        name: string
+      },
+      ruc: string,
+      name: string,
+      address: string,
+      phone: string
+    },
+    name: string,
+    city: string,
+    key: string
   },
-  "patient": {
-    "gender": "male" | "female",
-    "birthday": "date",
-    "dni": "string",
-    "name": "string",
-    "lastname": "string",
-    "email": "string"
-  }
+  jobPosition: {
+    key: string,
+    name: string
+  },
+  patient: {
+    gender: "male" | "female",
+    birthday: Date,
+    name: string,
+    lastname: string,
+    dni: string,
+    email: string,
+    role: string | undefined
+  },
+  process: string
 }
 ```
 
-#### Response
+##### Response
 
-##### Response Status Code
-
-- 201 Created
-
-##### Response Body
-
-```json
+```typescript
 {
-  "id": "number",
-  "process": "string",
-  "client": {
-    "dni": "string",
-    "fullname": "string"
+  id: number,
+  process: string,
+  createAt: Date,
+  mailStatus: boolean,
+  orderStatus: string,
+  client: {
+    dni: string,
+    name: string,
+    lastname: string,
+    managementId: number,
+    areaId: number,
+    email: [
+      {
+        id: number,
+        email: string,
+        default: boolean
+      }
+    ]
   },
-  "results": [
+  results: [
     {
-      "id": "number",
-      "hasFile": true,
-      "report": { "id": 0 } | null
+      id: number,
+      examType: string,
+      examSubtype: string,
+      examName: string,
+      hasFile: boolean,
+      diseases: [
+        {
+          id: number,
+          diseaseId: string,
+          diseaseName: string,
+          diseaseGroupId: string,
+          diseaseGroupName: string,
+          diseaseCommentary: string
+        }
+      ],
+      report: {
+        id: number,
+        content: string,
+        hasFile: boolean
+      }
     }
   ]
 }
 ```
 
-<div id='endpoint-16'/>
-
-### `PATCH` /external/connection/medical/order/_{source}_/_{key}_
+#### `PATCH` /external/connection/medical/orders/_{source}_/_{key}_
 
 Actualiza una orden médica.
 
-#### Request Headers
+##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `application/json`
 - `Accept`: `application/json`
 
-#### URL Parameters
+##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
 - `key`: Identificador único del registro de la orden médica.
   - **Type**: _String_
 
-#### Request Body
+##### Request Body
 
 - **process**: Nombre actualizado del proceso médico.
 
-```json
+```typescript
 {
-  "process": "string"
+  process: string;
 }
 ```
 
-#### Response
+##### Response
 
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
+```typescript
 {
-  "id": "number",
-  "process": "string",
-  "client": {
-    "dni": "string",
-    "fullname": "string"
+  id: number,
+  process: string,
+  createAt: Date,
+  mailStatus: boolean,
+  orderStatus: string,
+  client: {
+    dni: string,
+    name: string,
+    lastname: string,
+    managementId: number,
+    areaId: number,
+    email: [
+      {
+        id: number,
+        email: string,
+        default: boolean
+      }
+    ]
   },
-  "results": [
+  results: [
     {
-      "id": "number",
-      "hasFile": true,
-      "report": { "id": 0 } | null
+      id: number,
+      examType: string,
+      examSubtype: string,
+      examName: string,
+      hasFile: boolean,
+      diseases: [
+        {
+          id: number,
+          diseaseId: string,
+          diseaseName: string,
+          diseaseGroupId: string,
+          diseaseGroupName: string,
+          diseaseCommentary: string
+        }
+      ],
+      report: {
+        id: number,
+        content: string,
+        hasFile: boolean
+      }
     }
   ]
 }
 ```
 
-<div id='endpoint-17'/>
+<div id='endpoint-medical-result'/>
 
-### `GET` /external/connection/medical/result/_{source}_/_{key}_
+### Resultados médicos
+
+#### `GET` /external/connection/medical/result/_{source}_/_{key}_
 
 Obtiene un resultado médico utilizando su identificador único y su pertenencia a la aplicación original.
 
-#### Request Headers
+##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `application/json`
 - `Accept`: `application/json`
 
-#### URL Parameters
+##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
 - `key`: Identificador único del resultado médico.
   - **Type**: _String_
 
-#### Response
+##### Response
 
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
+```typescript
 {
-  "id": "number",
-  "hasFile": true,
-  "report": { "id": 0 } | null
+  id: number,
+  examType: string,
+  examSubtype: string,
+  examName: string,
+  hasFile: boolean,
+  diseases: [
+    {
+      id: number,
+      diseaseId: string,
+      diseaseName: string,
+      diseaseGroupId: string,
+      diseaseGroupName: string,
+      diseaseCommentary: string
+    }
+  ],
+  report: {
+    id: number,
+    content: string,
+    hasFile: boolean
+  }
 }
 ```
 
-<div id='endpoint-18'/>
-
-### `POST` /external/connection/medical/result/_{source}_
+#### `POST` /external/connection/medical/result/_{source}_/_{key}_
 
 Crea un resultado médico utilizando la aplicación de origen especificada.
 
-#### Request Headers
+##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `multipart/form-data`
 - `Accept`: `application/json`
 
-#### URL Parameters
+##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
 
-#### Request Body
+##### Request Body
 
-- **key**: Identificador único del resultado médico.
-- **file**: Archivo en formato PDF.
-- **exam**:
-  - **key**: Identificador único del examen médico.
-  - **name**: Nombre del examen médico.
-- **doctor**:
-  - **dni**: DNI del médico. Debe tener una longitud de 10 caracteres y ser único.
-  - **name**: Nombre del médico.
-  - **lastname**: Apellido del médico.
-  - **email**: Correo electrónico del médico.
-- **order**:
-  - **process**: Nombre del proceso médico.
-  - **branch**:
-    - **key**: Identificador único de la sucursal.
-    - **name**: Nombre de la sucursal.
-    - **city**: Ciudad donde se encuentra la sucursal.
-    - **company**:
-      - **key**: Identificador único de la empresa.
-      - **ruc**: RUC de la empresa. Debe ser único.
-      - **name**: Nombre de la empresa.
-      - **address**: Dirección de la empresa.
-      - **phone**: Teléfono de la empresa.
-      - **corporativeGroup**:
-        - **name**: Nombre del grupo corporativo.
-        - **key**: Identificador único del grupo corporativo.
-  - **patient**:
-    - **key**: Identificador único del paciente.
-    - **gender**: Género del paciente. Debe ser `male` o `female`.
-    - **birthday**: Fecha de cumpleaños del paciente.
-    - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
-    - **name**: Nombre del paciente.
-    - **lastname**: Apellido del paciente.
-    - **email**: Correo del paciente
+El cuerpo de la peticion es un formulario con los siguientes campos:
 
 | Subject | Type            | Mandatory |
 | ------- | --------------- | --------- |
 | file    | string($binary) | false     |
-| key     | string          | true      |
 | exam    | object          | true      |
 | doctor  | object          | true      |
 | order   | object          | true      |
 
-Los objetos que se requieren son los siguientes:
+Acontinuacion se describe cada campo:
+
+- **file**: Archivo en formato PDF (Opcional).
+- **exam**:
+  - **type**:
+    - **key**: Identificador único del tipo de examen.
+    - **name**: Nombre de un tipo de examen. Este es único.
+  - **subtype**: (Opcional)
+    - **key**: Identificador único del subtipo de examen.
+    - **name**: Nombre de un subtipo de examen médico. Este es único.
+  - **key**: Identificador único del examen.
+  - **name**: Nombre del examen médico. Este es único.
+- **doctor**:
+  - **name**: Nombre del médico.
+  - **lastname**: Apellido del médico.
+  - **email**: Correo electrónico del médico.
+  - **dni**: DNI del médico. Debe tener una longitud de 10 caracteres y ser único.
+  - **role**: Role del médico (Solo aplica para eeq).
+- **order**:
+  - **key**: Identificador único de la orden medica.
+  - **branch**:
+    - **company**:
+        - **key**: Identificador único de la empresa.
+        - **corporativeGroup**:
+          - **key**: Identificador único del grupo corporativo.
+          - **name**: Nombre del grupo corporativo.
+        - **ruc**: RUC de la empresa. Debe ser único.
+        - **name**: Nombre de la empresa.
+        - **address**: Dirección de la empresa.
+        - **phone**: Teléfono de la empresa.
+    - **name**: Nombre de la sucursal.
+    - **city**: Ciudad donde se encuentra la sucursal.
+    - **key**: Identificador único de la sucursal.
+  - **jobPosition**:
+    - **key**: Identificador único del puesto de trabajo.
+    - **name**: Nombre del puesto de trabajo. Este es único.
+  - **patient**:
+    - **gender**: Género del paciente. Debe ser `male` o `female`.
+    - **birthday**: Fecha de cumpleaños del paciente.
+    - **name**: Nombre del paciente.
+    - **lastname**: Apellido del paciente.
+    - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
+    - **email**: Correo del paciente.
+    - **role**: Role del paciente (Solo aplica para eeq).
+  - **process**: Nombre del proceso médico.
 
 **Exam (object)**
 
-```json
+```typescript
 {
-  "key": "string",
-  "name": "string"
+  type: {
+    key: string,
+    name: string
+  },
+  subtype: {
+    key: string,
+    name: string
+  } | undefined,
+  key: string,
+  name: string
 }
 ```
 
 **Doctor (object)**
 
-```json
+```typescript
 {
-  "dni": "string",
-  "name": "string",
-  "lastname": "string",
-  "email": "string"
+  name: string,
+  lastname: string,
+  email: string,
+  dni: string,
+  role: string | undefined
 }
 ```
 
 **Order (object)**
 
-```json
+```typescript
 {
-  "key": "string",
-  "process": "string",
-  "branch": {
-    "key": "string",
-    "name": "string",
-    "city": "string",
-    "company": {
-      "key": "string",
-      "ruc": "string",
-      "name": "string",
-      "address": "string",
-      "phone": "string",
-      "corporativeGroup": {
-        "name": "string",
-        "key": "string"
-      }
-    }
+  key: string,
+  branch: {
+    company: {
+      key: string,
+      corporativeGroup: {
+        key: string,
+        name: string
+      },
+      ruc: string,
+      name: string,
+      address: string,
+      phone: string
+    },
+    name: string,
+    city: string,
+    key: string
   },
-  "patient": {
-    "gender": "male" | "female",
-    "birthday": "date",
-    "dni": "string",
-    "name": "string",
-    "lastname": "string",
-    "email": "string"
-  }
+  jobPosition: {
+    key: string,
+    name: string
+  },
+  patient: {
+    gender: "male" | "female",
+    birthday: Date,
+    name: string,
+    lastname: string,
+    dni: string,
+    role: string | undefined
+  },
+  process: string
 }
 ```
 
-#### Response
+##### Response
 
-##### Response Status Code
-
-- 201 Created
-
-##### Response Body
-
-```json
+```typescript
 {
-  "id": "number",
-  "hasFile": "boolean",
-  "report": { "id": 0 } | null
+  id: number,
+  examType: string,
+  examSubtype: string,
+  examName: string,
+  hasFile: boolean,
+  diseases: [
+    {
+      id: number,
+      diseaseId: string,
+      diseaseName: string,
+      diseaseGroupId: string,
+      diseaseGroupName: string,
+      diseaseCommentary: string
+    }
+  ],
+  report: {
+    id: number,
+    content: string,
+    hasFile: boolean
+  } | undefined
 }
 ```
 
-<div id='endpoint-19'/>
+#### `PATCH` /external/connection/medical/result/_{source}_/_{key}_/file
 
-### `PATCH` /external/connection/medical/result/_{source}_/file/_{key}_
+Permite subir un archivo PDF y asociarlo a un resultado médico.
 
-Permite subir un archivo PDF si no fue proporcionado al momento de crear el resultado médico.
-
-#### Request Headers
+##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `multipart/form-data`
 - `Accept`: `application/json`
 
-#### URL Parameters
+##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
 - `key`: Identificador único del resultado médico.
   - **Type**: _String_
 
-#### Request Body
+##### Request Body
 
 - **file**: Archivo PDF que se desea subir para adjuntarlo al resultado médico.
 
@@ -1107,87 +1309,105 @@ Permite subir un archivo PDF si no fue proporcionado al momento de crear el resu
 | ------- | --------------- | --------- |
 | file    | string($binary) | true      |
 
-#### Response
+##### Response
 
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
-
-```json
+```typescript
 {
-  "id": "number",
-  "hasFile": true,
-  "report": { "id": 0 } | null
+  id: number,
+  examType: string,
+  examSubtype: string,
+  examName: string,
+  hasFile: boolean,
+  diseases: [
+    {
+      id: number,
+      diseaseId: string,
+      diseaseName: string,
+      diseaseGroupId: string,
+      diseaseGroupName: string,
+      diseaseCommentary: string
+    }
+  ],
+  report: {
+    id: number,
+    content: string,
+    hasFile: boolean
+  }
 }
 ```
+<div id='endpoint-medical-files'/>
 
-<div id='endpoint-20'/>
+### Archivos
 
-### `POST` /medical/file
+#### `POST` /medical/file
 
 Obtiene un archivo médico específico basado en el identificador único proporcionado por Omega Sistema de Reporteria Medica.
 
-#### Request Headers
+##### Request Headers
 
 - `Content-Type`: `application/json`
 
-#### Request Body
+##### Request Body
 
 - **id**: Identificador único de Omega Sistema de Reporteria Medica para el resultado o reporte.
 - **type**: Tipo del archivo requerido. Debe ser `result` o `report`.
 
-```json
+```typescript
 {
-  "id": "number",
-  "type": "report" | "result"
+  id: number,
+  type: "report" | "result"
 }
 ```
 
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
+##### Response
 
 Retorna un archivo en formato PDF
 
-<div id='endpoint-21'/>
-
-### `POST` /medical/file/multiple
+#### `POST` /medical/file/multiple
 
 Obtiene varios archivos médicos específicos basados en los identificadores únicos proporcionados por Omega Sistema de Reporteria Medica.
 
-#### Request Headers
+##### Request Headers
 
 - `Content-Type`: `application/json`
 
-#### Request Body
+##### Request Body
 
 - **files**: Lista de objetos que especifican los archivos médicos requeridos.
   - **id**: Identificador único de Omega Sistema de Reporteria Medica para el resultado o reporte.
   - **type**: Tipo del archivo requerido. Debe ser `result` o `report`.
 
-```json
+```typescript
 {
-  "files": [
+  files: [
     {
-      "id": "number",
-      "type": "report" | "result"
-    }
-  ]
+      id: number,
+      type: "report" | "result",
+    },
+  ];
 }
 ```
 
-#### Response
-
-##### Response Status Code
-
-- 200 OK
-
-##### Response Body
+##### Response
 
 Retorna un archivo en formato ZIP
+
+<div id='cities' />
+
+## Ciudades
+
+
+
+|||||||||||
+|------|------|------|------|------|------|------|------|------|------|
+|Ambato |Arajuno |Archidona |Atacames |Atuntaqui |Azogues |Babahoyo |Baeza |Bahía de Caráquez |Balao |
+|Balsas |Balzar |Baños de Agua Santa |Bucay |Calceta |Carlos Julio Arosemena Tola |Catarama |Chone |Coca |Colimes |
+|Coronel Marcelino Maridueña |Cotacachi |Cuenca |Daule |Durán |El Chaco |El Empalme |El Guabo |El Triunfo |Esmeraldas |
+|Gualaquiza |Guaranda |Guayaquil |Huaquillas |Ibarra |Isidro Ayora |Jama |Jujan |La Concordia |La Libertad |
+|Lago Agrio |Latacunga |Limones |Logroño |Loja |Lomas de Sargentillo |Macas |Machala |Manta |Mera |
+|Milagro |Montecristi |Muisne |Naranjal |Nobol |Nuevo Rocafuerte |Otavalo |Paján |Palestina |Palora |
+|Pasaje |Pedernales |Pedro Carbo |Pichincha |Pimampiro |Piñas |Playas |Portovelo |Portoviejo |Puerto Ayora |
+|Puerto Baquerizo Moreno |Puerto El Carmen de Putumayo |Puerto López |Puerto Villamil |Puyo |Quevedo |Quinindé |Quito |Riobamba |Rioverde |
+|Rocafuerte |San Lorenzo |San Vicente |Santa Rosa |Santo Domingo |Salinas |Samborondón |Santa Elena |Simón Bolívar |Sucre |
+|Sucúa|Tarapoa|Tena|Tosagua|Tulcán|Urcuquí|Valencia|Ventanas|Vinces| Yaguachi |
+|Yantzaza|Zamora|Zaruma |
