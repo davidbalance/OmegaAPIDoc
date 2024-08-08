@@ -459,7 +459,7 @@ Actualiza una posicion de trabajo.
 
 ### Pacientes
 
-#### `POST` /external/connection/patients
+#### `POST` /external/connection/patients/_{source}_
 
 Crea un paciente.
 
@@ -468,6 +468,11 @@ Crea un paciente.
 - `x-api-key`: Requiere un API key. Este será un string.
 - `Content-Type`: `application/json`
 - `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
 
 ##### Request Body
 
@@ -481,7 +486,12 @@ Crea un paciente.
 
 ```typescript
 {
-  gender: "male" | "female",
+  email: string,
+  jobPosition: {
+    key: string,
+    name: string
+  },
+  gender: male | female,
   birthday: Date,
   name: string,
   lastname: string,
@@ -504,7 +514,7 @@ Crea un paciente.
 }
 ```
 
-#### `PATCH` /external/connection/patients/_{dni}_
+#### `PATCH` /external/connection/patients/_{source}_/_{dni}_
 
 Actualiza un paciente.
 
@@ -516,6 +526,8 @@ Actualiza un paciente.
 
 ##### URL Parameters
 
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
 - `dni`: El DNI del paciente.
   - **Type**: _String_
 
