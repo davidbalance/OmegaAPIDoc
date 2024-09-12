@@ -3,19 +3,19 @@
 ## Table of contents
 
 1. [Introducción](#introduction)
-    1. [Autenticación](#authentication)
+   1. [Autenticación](#authentication)
 2. [Endpoints](#endpoints)
-    1. [Grupos Corporativos](#enpoint-corporative-groups)
-    2. [Empresas](#endpoint-companies)
-    3. [Sucursales](#endpoint-branch)
-    4. [Puestos de trabajo](#endpoint-job-position)
-    5. [Pacientes](#endpoint-patient)
-    6. [Medicos](#endpoint-doctor)
-    7. [Examenes](#endpoint-exams)
-    7. [Tipo de examen](#endpoint-exam-types)
-    8. [Ordenes médicas](#endpoint-medical-order)
-    9. [Resultados médicos](#endpoint-medical-result)
-    10. [Archivos](#endpoint-medical-files)
+   1. [Grupos Corporativos](#enpoint-corporative-groups)
+   2. [Empresas](#endpoint-companies)
+   3. [Sucursales](#endpoint-branch)
+   4. [Puestos de trabajo](#endpoint-job-position)
+   5. [Pacientes](#endpoint-patient)
+   6. [Medicos](#endpoint-doctor)
+   7. [Examenes](#endpoint-exams)
+   8. [Tipo de examen](#endpoint-exam-types)
+   9. [Ordenes médicas](#endpoint-medical-order)
+   10. [Resultados médicos](#endpoint-medical-result)
+   11. [Archivos](#endpoint-medical-files)
 3. [Ciudades](#cities)
 
 <div id='introduction'/>
@@ -379,6 +379,7 @@ Actualiza una sucursal. Esta sucursal podrá ser utilizada para la creación y g
   }
 }
 ```
+
 <div id='endpoint-job-position'/>
 
 ### Puestos de trabajo
@@ -560,6 +561,7 @@ Actualiza un paciente.
   lastname: string
 }
 ```
+
 <div id='endpoint-doctor'/>
 
 ### Medicos
@@ -646,6 +648,7 @@ Actualiza un medico.
   hasFile: boolean
 }
 ```
+
 <div id='endpoint-exams'/>
 
 ### Examenes
@@ -878,9 +881,9 @@ Obtiene una orden médica utilizando su identificador único y su pertenencia a 
 }
 ```
 
-#### `POST` /external/connection/medical/orders/_{source}_/_{key}_
+#### `GET` /external/connection/medical/orders/_{id}_
 
-Crea una orden médica.
+Obtiene una orden médica utilizando su identificador único.
 
 ##### Request Headers
 
@@ -890,71 +893,8 @@ Crea una orden médica.
 
 ##### URL Parameters
 
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-
-##### Request Body
-
-- **branch**:
-  - **company**:
-    - **key**: Identificador único de la empresa.
-    - **corporativeGroup**:
-      - **key**: Identificador único del grupo corporativo.
-      - **name**: Nombre del grupo corporativo. Debe ser único.
-    - **ruc**: RUC de la empresa. Debe ser único.
-    - **name**: Nombre de la empresa. Debe ser único.
-    - **address**: Dirección de la empresa.
-    - **phone**: Teléfono de la empresa.
-  - **name**: Nombre de la sucursal.
-  - **city**: Ciudad de la sucursal. Debe ser una de las ciudades especificadas al final del documento.
-  - **key**: Identificador único de la sucursal.
-- **jobPosition**: 
-  - **key**: Identificador único del puesto de trabajo.
-  - **name**: Nombre del puesto de trabajo.
-- **patient**:
-  - **gender**: Género del paciente. Debe ser `male` o `female`.
-  - **birthday**: Fecha de cumpleaños del paciente.
-  - **name**: Nombre del paciente.
-  - **lastname**: Apellido del paciente.
-  - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
-  - **email**: Correo del paciente
-  - **role**: Role del paciente (Solo aplica para eeq).
-- **process**: Nombre del proceso médico.
-
-```typescript
-{
-  branch: {
-    company: {
-      key: string,
-      corporativeGroup: {
-        key: string,
-        name: string
-      },
-      ruc: string,
-      name: string,
-      address: string,
-      phone: string
-    },
-    name: string,
-    city: string,
-    key: string
-  },
-  jobPosition: {
-    key: string,
-    name: string
-  },
-  patient: {
-    gender: "male" | "female",
-    birthday: Date,
-    name: string,
-    lastname: string,
-    dni: string,
-    email: string,
-    role: string | undefined
-  },
-  process: string
-}
-```
+- `id`: Identificador unico de la orden medica.
+  - **Type**: _Number_
 
 ##### Response
 
@@ -1003,6 +943,221 @@ Crea una orden médica.
       }
     }
   ]
+}
+```
+
+#### `POST` /external/connection/medical/orders/_{source}_/_{key}_
+
+Crea una orden médica.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+
+##### Request Body
+
+- **branch**:
+  - **company**:
+    - **key**: Identificador único de la empresa.
+    - **corporativeGroup**:
+      - **key**: Identificador único del grupo corporativo.
+      - **name**: Nombre del grupo corporativo. Debe ser único.
+    - **ruc**: RUC de la empresa. Debe ser único.
+    - **name**: Nombre de la empresa. Debe ser único.
+    - **address**: Dirección de la empresa.
+    - **phone**: Teléfono de la empresa.
+  - **name**: Nombre de la sucursal.
+  - **city**: Ciudad de la sucursal. Debe ser una de las ciudades especificadas al final del documento.
+  - **key**: Identificador único de la sucursal.
+- **jobPosition**:
+  - **key**: Identificador único del puesto de trabajo.
+  - **name**: Nombre del puesto de trabajo.
+- **patient**:
+  - **gender**: Género del paciente. Debe ser `male` o `female`.
+  - **birthday**: Fecha de cumpleaños del paciente.
+  - **name**: Nombre del paciente.
+  - **lastname**: Apellido del paciente.
+  - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
+  - **email**: Correo del paciente
+  - **role**: Role del paciente (Solo aplica para eeq).
+- **process**: Nombre del proceso médico.
+
+```typescript
+{
+  branch: {
+    company: {
+      key: string,
+      corporativeGroup: {
+        key: string,
+        name: string
+      },
+      ruc: string,
+      name: string,
+      address: string,
+      phone: string
+    },
+    name: string,
+    city: string,
+    key: string
+  },
+  jobPosition: {
+    key: string,
+    name: string
+  },
+  patient: {
+    gender: "male" | "female",
+    birthday: Date,
+    name: string,
+    lastname: string,
+    dni: string,
+    email: string,
+    role: string | undefined
+  },
+  process: string
+}
+```
+
+#### `POST` /external/connection/medical/orders/_{source}_/_{key}_
+
+Crea una orden médica.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+
+##### Request Body
+
+- **results**: Arreglo de pruebas/examenes
+  - **key**: Identificador unico para cada resultado
+  - **exam**:
+    - **key**: Identificador unico para cada examen
+    - **name**: Nombre del examen
+    - **type**:
+      - **name**: Nombre del tipo de examen
+      - **key**: Identificador unico del tipo de examen
+  - **subtype**: Dato optional
+    - **name**: Nombre del subtipo de examne
+    - **key**: Identificador unico del subtipo de examen
+  - **doctor**:
+  - **name**: Nombre del medico acargo de la prueba
+  - **lastname**: Apellido del medico acargo de la prueba
+  - **email**: Correo electronico del medico
+  - **dni**: DNI del medico acargo de la prueba
+- **branch**:
+  - **company**:
+    - **key**: Identificador único de la empresa.
+    - **corporativeGroup**:
+      - **key**: Identificador único del grupo corporativo.
+      - **name**: Nombre del grupo corporativo. Debe ser único.
+    - **ruc**: RUC de la empresa. Debe ser único.
+    - **name**: Nombre de la empresa. Debe ser único.
+    - **address**: Dirección de la empresa.
+    - **phone**: Teléfono de la empresa.
+  - **name**: Nombre de la sucursal.
+  - **city**: Ciudad de la sucursal. Debe ser una de las ciudades especificadas al final del documento.
+  - **key**: Identificador único de la sucursal.
+- **jobPosition**:
+  - **key**: Identificador único del puesto de trabajo.
+  - **name**: Nombre del puesto de trabajo.
+- **patient**:
+  - **gender**: Género del paciente. Debe ser `male` o `female`.
+  - **birthday**: Fecha de cumpleaños del paciente.
+  - **name**: Nombre del paciente.
+  - **lastname**: Apellido del paciente.
+  - **dni**: DNI del paciente. Debe tener una longitud de 10 caracteres y ser único.
+  - **email**: Correo del paciente
+  - **role**: Role del paciente (Solo aplica para eeq).
+- **process**: Nombre del proceso médico.
+
+```typescript
+{
+  results: [
+        {
+            key: string,
+            exam: {
+                type: {
+                    name: string,
+                    key: string
+                },
+                subtype: {
+                    name: string,
+                    key: string
+                },
+                key: string,
+                name: string
+            },
+            doctor: {
+                name: string,
+                lastname: string,
+                email: string,
+                dni: string
+            }
+        }
+    ],
+    branch: {
+        key: string,
+        company: {
+            key: string,
+            corporativeGroup: {
+                key: string,
+                name: string
+            },
+            ruc: string,
+            name: string,
+            address: string,
+            phone: string
+        },
+        name: string,
+        city: string
+    },
+    jobPosition?: {
+        key: string,
+        name: string
+    }: undefined,
+    patient: {
+        name: string,
+        dni: string,
+        lastname: string,
+        gender: 'male' | 'female',
+        birthday: Date,
+        email: string
+    },
+    process: string
+}
+```
+
+##### Response
+
+```typescript
+{
+  results: [
+    {
+      id: number,
+      examType: string,
+      examSubtype: string,
+      examName: string,
+      hasFile: boolean
+    },
+  ],
+  id: number,
+  process: string,
+  createAt: Date,
+  mailStatus: boolean,
+  orderStatus: 'created' | 'validated'
 }
 ```
 
@@ -1179,14 +1334,14 @@ Acontinuacion se describe cada campo:
   - **key**: Identificador único de la orden medica.
   - **branch**:
     - **company**:
-        - **key**: Identificador único de la empresa.
-        - **corporativeGroup**:
-          - **key**: Identificador único del grupo corporativo.
-          - **name**: Nombre del grupo corporativo.
-        - **ruc**: RUC de la empresa. Debe ser único.
-        - **name**: Nombre de la empresa.
-        - **address**: Dirección de la empresa.
-        - **phone**: Teléfono de la empresa.
+      - **key**: Identificador único de la empresa.
+      - **corporativeGroup**:
+        - **key**: Identificador único del grupo corporativo.
+        - **name**: Nombre del grupo corporativo.
+      - **ruc**: RUC de la empresa. Debe ser único.
+      - **name**: Nombre de la empresa.
+      - **address**: Dirección de la empresa.
+      - **phone**: Teléfono de la empresa.
     - **name**: Nombre de la sucursal.
     - **city**: Ciudad donde se encuentra la sucursal.
     - **key**: Identificador único de la sucursal.
@@ -1347,6 +1502,57 @@ Permite subir un archivo PDF y asociarlo a un resultado médico.
   }
 }
 ```
+
+#### `PATCH` /external/connection/medical/result/_{id}_/file
+
+Permite subir un archivo PDF y asociarlo a un resultado médico.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `multipart/form-data`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `id`: Identificador unico proporcionado por el sistema
+  - **Type**: _Number_
+
+##### Request Body
+
+- **file**: Archivo PDF que se desea subir para adjuntarlo al resultado médico.
+
+| Subject | Type            | Mandatory |
+| ------- | --------------- | --------- |
+| file    | string($binary) | true      |
+
+##### Response
+
+```typescript
+{
+  id: number,
+  examType: string,
+  examSubtype: string,
+  examName: string,
+  hasFile: boolean,
+  diseases: [
+    {
+      id: number,
+      diseaseId: string,
+      diseaseName: string,
+      diseaseGroupId: string,
+      diseaseGroupName: string,
+      diseaseCommentary: string
+    }
+  ],
+  report: {
+    id: number,
+    content: string,
+    hasFile: boolean
+  }
+}
+```
+
 <div id='endpoint-medical-files'/>
 
 ### Archivos
@@ -1408,18 +1614,16 @@ Retorna un archivo en formato ZIP
 
 ## Ciudades
 
-
-
-|||||||||||
-|------|------|------|------|------|------|------|------|------|------|
-|Ambato |Arajuno |Archidona |Atacames |Atuntaqui |Azogues |Babahoyo |Baeza |Bahía de Caráquez |Balao |
-|Balsas |Balzar |Baños de Agua Santa |Bucay |Calceta |Carlos Julio Arosemena Tola |Catarama |Chone |Coca |Colimes |
-|Coronel Marcelino Maridueña |Cotacachi |Cuenca |Daule |Durán |El Chaco |El Empalme |El Guabo |El Triunfo |Esmeraldas |
-|Gualaquiza |Guaranda |Guayaquil |Huaquillas |Ibarra |Isidro Ayora |Jama |Jujan |La Concordia |La Libertad |
-|Lago Agrio |Latacunga |Limones |Logroño |Loja |Lomas de Sargentillo |Macas |Machala |Manta |Mera |
-|Milagro |Montecristi |Muisne |Naranjal |Nobol |Nuevo Rocafuerte |Otavalo |Paján |Palestina |Palora |
-|Pasaje |Pedernales |Pedro Carbo |Pichincha |Pimampiro |Piñas |Playas |Portovelo |Portoviejo |Puerto Ayora |
-|Puerto Baquerizo Moreno |Puerto El Carmen de Putumayo |Puerto López |Puerto Villamil |Puyo |Quevedo |Quinindé |Quito |Riobamba |Rioverde |
-|Rocafuerte |San Lorenzo |San Vicente |Santa Rosa |Santo Domingo |Salinas |Samborondón |Santa Elena |Simón Bolívar |Sucre |
-|Sucúa|Tarapoa|Tena|Tosagua|Tulcán|Urcuquí|Valencia|Ventanas|Vinces| Yaguachi |
-|Yantzaza|Zamora|Zaruma |
+|                             |                              |                     |                 |               |                             |             |             |                   |              |
+| --------------------------- | ---------------------------- | ------------------- | --------------- | ------------- | --------------------------- | ----------- | ----------- | ----------------- | ------------ |
+| Ambato                      | Arajuno                      | Archidona           | Atacames        | Atuntaqui     | Azogues                     | Babahoyo    | Baeza       | Bahía de Caráquez | Balao        |
+| Balsas                      | Balzar                       | Baños de Agua Santa | Bucay           | Calceta       | Carlos Julio Arosemena Tola | Catarama    | Chone       | Coca              | Colimes      |
+| Coronel Marcelino Maridueña | Cotacachi                    | Cuenca              | Daule           | Durán         | El Chaco                    | El Empalme  | El Guabo    | El Triunfo        | Esmeraldas   |
+| Gualaquiza                  | Guaranda                     | Guayaquil           | Huaquillas      | Ibarra        | Isidro Ayora                | Jama        | Jujan       | La Concordia      | La Libertad  |
+| Lago Agrio                  | Latacunga                    | Limones             | Logroño         | Loja          | Lomas de Sargentillo        | Macas       | Machala     | Manta             | Mera         |
+| Milagro                     | Montecristi                  | Muisne              | Naranjal        | Nobol         | Nuevo Rocafuerte            | Otavalo     | Paján       | Palestina         | Palora       |
+| Pasaje                      | Pedernales                   | Pedro Carbo         | Pichincha       | Pimampiro     | Piñas                       | Playas      | Portovelo   | Portoviejo        | Puerto Ayora |
+| Puerto Baquerizo Moreno     | Puerto El Carmen de Putumayo | Puerto López        | Puerto Villamil | Puyo          | Quevedo                     | Quinindé    | Quito       | Riobamba          | Rioverde     |
+| Rocafuerte                  | San Lorenzo                  | San Vicente         | Santa Rosa      | Santo Domingo | Salinas                     | Samborondón | Santa Elena | Simón Bolívar     | Sucre        |
+| Sucúa                       | Tarapoa                      | Tena                | Tosagua         | Tulcán        | Urcuquí                     | Valencia    | Ventanas    | Vinces            | Yaguachi     |
+| Yantzaza                    | Zamora                       | Zaruma              |
