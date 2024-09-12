@@ -960,6 +960,8 @@ Crea una orden médica.
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
   - **Type**: _String_
+- `key`: Identificador único de la orden médica.
+  - **Type**: _String_
 
 ##### Request Body
 
@@ -1024,7 +1026,7 @@ Crea una orden médica.
 }
 ```
 
-#### `POST` /external/connection/medical/orders/_{source}_/_{key}_
+#### `POST` /external/connection/medical/order/_{source}_/_{key}_/results
 
 Crea una orden médica.
 
@@ -1037,6 +1039,8 @@ Crea una orden médica.
 ##### URL Parameters
 
 - `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único de la orden médica.
   - **Type**: _String_
 
 ##### Request Body
