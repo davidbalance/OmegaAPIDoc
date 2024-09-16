@@ -1455,6 +1455,58 @@ Acontinuacion se describe cada campo:
 }
 ```
 
+#### `POST` /external/connection/medical/result/_{source}_/_{key}_/file
+
+Permite subir un archivo PDF y asociarlo a un resultado médico.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `multipart/form-data`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único del resultado médico.
+  - **Type**: _String_
+
+##### Request Body
+
+- **file**: Archivo PDF que se desea subir para adjuntarlo al resultado médico.
+
+| Subject | Type            | Mandatory |
+| ------- | --------------- | --------- |
+| file    | string($binary) | true      |
+
+##### Response
+
+```typescript
+{
+  id: number,
+  examType: string,
+  examSubtype: string,
+  examName: string,
+  hasFile: boolean,
+  diseases: [
+    {
+      id: number,
+      diseaseId: string,
+      diseaseName: string,
+      diseaseGroupId: string,
+      diseaseGroupName: string,
+      diseaseCommentary: string
+    }
+  ],
+  report: {
+    id: number,
+    content: string,
+    hasFile: boolean
+  }
+}
+```
+
 #### `PATCH` /external/connection/medical/result/_{source}_/_{key}_/file
 
 Permite subir un archivo PDF y asociarlo a un resultado médico.
