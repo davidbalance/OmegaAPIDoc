@@ -1166,7 +1166,7 @@ Crea una orden médica.
   - **exam**:
     - **key**: Identificador unico para cada examen
     - **name**: Nombre del examen
-    - **type**: Dato opcional
+  - **type**: Dato opcional
       - **name**: Nombre del tipo de examen
       - **key**: Identificador unico del tipo de examen
   - **subtype**: Dato optional
