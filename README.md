@@ -1480,7 +1480,7 @@ Permite enviar un archivo en base64 junto con su mimetype.
 ```typescript
 {
   mimetype: string;
-  url: string;
+  base64: string;
 }
 ```
 
