@@ -1050,7 +1050,7 @@ Crea una orden médica.
   - **exam**:
     - **key**: Identificador unico para cada examen
     - **name**: Nombre del examen
-    - **type**:
+    - **type**: Dato opcional
       - **name**: Nombre del tipo de examen
       - **key**: Identificador unico del tipo de examen
   - **subtype**: Dato optional
@@ -1091,16 +1091,16 @@ Crea una orden médica.
 {
   results: [
         {
-            key: string,
+            key: string | undefined,
             exam: {
                 type: {
                     name: string,
                     key: string
-                },
+                } | undefined,
                 subtype: {
                     name: string,
                     key: string
-                },
+                } | undefined,
                 key: string,
                 name: string
             },
