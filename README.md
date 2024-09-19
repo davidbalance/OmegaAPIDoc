@@ -298,7 +298,7 @@ Crea una sucursal. Esta podrá ser utilizada para la creación y gestión de pac
 ##### Request Body
 
 - **company**:
-  - **key**: Identificador único.
+  - **key**: Identificador único. Este dato es opcional
   - **corporativeGroup**:
     - **key**: Identificador único.
     - **name**: Nombre del grupo corporativo. Este es único.
@@ -312,7 +312,7 @@ Crea una sucursal. Esta podrá ser utilizada para la creación y gestión de pac
 ```typescript
 {
   company: {
-    key: string,
+    key: string | undefined,
     corporativeGroup: {
       key: string,
       name: string
@@ -326,6 +326,56 @@ Crea una sucursal. Esta podrá ser utilizada para la creación y gestión de pac
   city: string
 }
 ```
+
+<details>
+  <summary><b>Ejemplos</b></summary>
+
+  <details>
+  <summary><i>Todos los datos</i></summary>
+
+```typescript
+{
+  company: {
+    key: 'company-0001',
+    corporativeGroup: {
+      key: 'corporative-group-0001,
+      name: 'LA FAVORITA'
+    },
+    ruc: '1234567890001',
+    name: 'SUPERMAXI,
+    address: 'Av.Amazonas',
+    phone: '0999999999'
+  },
+  name: 'Av.Amazonas',
+  city: 'Quito'
+}
+```
+
+  </details>
+  
+  <details>
+  <summary><i>Todos sin key de la empresa</i></summary>
+
+```typescript
+{
+  company: {
+    corporativeGroup: {
+      key: 'corporative-group-0001,
+      name: 'LA FAVORITA'
+    },
+    ruc: '1234567890001',
+    name: 'SUPERMAXI,
+    address: 'Av.Amazonas',
+    phone: '0999999999'
+  },
+  name: 'Av.Amazonas',
+  city: 'Quito'
+}
+```
+
+  </details>
+</details>
+
 
 ##### Response
 
@@ -671,10 +721,10 @@ Crea un examen de laboratorio. Este podrá ser utilizado para la creación y ges
 ##### Request Body
 
 - **name**: Nombre del examen médico. Este es único.
-- **type**:
+- **type**: Datos Opcionales
   - **key**: Identificador único del tipo de examen.
   - **name**: Nombre de un tipo de examen. Este es único.
-- **subtype**:
+- **subtype**: Datos Opcionales
   - **key**: Identificador único del subtipo de examen.
   - **name**: Nombre de un subtipo de examen médico. Este es único.
 
@@ -684,13 +734,79 @@ Crea un examen de laboratorio. Este podrá ser utilizado para la creación y ges
   type: {
     key: string,
     name: string
-  },
+  } | undefined,
   subtype: {
     key: string,
     name: string,
+  } | undefined
+}
+```
+
+<details>
+  <summary><b>Ejemplos</b></summary>
+
+  <details>
+  <summary><i>Todos los datos</i></summary>
+
+```typescript
+{
+  name: 'COLESTEROL',
+  type: {
+    key: 'exam-type-0001',
+    name: 'LABORATORIO CLINICO'
+  },
+  subtype: {
+    key: 'exam-subtyp-0001',
+    name: 'ELECTROCARDIOGRAMA',
   }
 }
 ```
+
+  </details>
+
+  <details>
+  <summary><i>Sin tipo</i></summary>
+
+```typescript
+{
+  name: 'COLESTEROL'
+  subtype: {
+    key: 'exam-subtyp-0001',
+    name: 'ELECTROCARDIOGRAMA',
+  }
+}
+```
+
+  </details>
+
+  <details>
+
+  <summary><i>Sin subtipo</i></summary>
+
+```typescript
+{
+  name: 'COLESTEROL'
+  type: {
+    key: 'exam-type-0001',
+    name: 'LABORATORIO CLINICO'
+  },
+}
+```
+
+  </details>
+
+  <details>
+  <summary><i>Sin tipo ni subtipo</i></summary>
+
+```typescript
+{
+  name: "COLESTEROL";
+}
+```
+
+  </details>
+
+</details>
 
 ##### Response
 
@@ -1115,7 +1231,7 @@ Crea una orden médica.
     branch: {
         key: string,
         company: {
-            key: string,
+            key: string | undefined,
             corporativeGroup: {
                 key: string,
                 name: string
@@ -1131,7 +1247,7 @@ Crea una orden médica.
     jobPosition?: {
         key: string,
         name: string
-    }: undefined,
+    } | undefined,
     patient: {
         name: string,
         dni: string,
@@ -1143,6 +1259,302 @@ Crea una orden médica.
     process: string
 }
 ```
+
+<details>
+  <summary><b>Ejemplos</b></summary>
+  <details>
+  <summary><i>Todos los datos</i></summary>
+
+```typescript
+{
+  results: [
+        {
+            key: 'prueba-000001',
+            exam: {
+                type: {
+                    name: 'LABORATORIO CLINICO',
+                    key: 'exam-type-00001'
+                },
+                subtype: {
+                    name: 'ELECTROCARDIOGRAMA',
+                    key: 'exam-subtype-00001'
+                },
+                key: 'exam-000001',
+                name: 'COLESTEROL'
+            },
+            doctor: {
+                name: 'LUIS JAVIER',
+                lastname: 'PEREZ ASTUDILLO',
+                email: 'test@email.com',
+                dni: '1234567890'
+            }
+        }
+    ],
+    branch: {
+        key: 'branch-00001',
+        company: {
+            key: 'company-00001',
+            corporativeGroup: {
+                key: 'corporative-00001,
+                name: 'LA FAVORITA'
+            },
+            ruc: '1234567890001',
+            name: 'SUPERMAXI',
+            address: 'Av.Amazonas',
+            phone: '0999999999'
+        },
+        name: 'Av.Amazonas',
+        city: 'Quito'
+    },
+    jobPosition: {
+        key: 'jobposition-0001',
+        name: 'ABOGADO'
+    },
+    patient: {
+        name: 'XIMENA ALEJANDRA',
+        lastname: 'GARCIA FEIJOO',
+        dni: '1234567890',
+        gender: 'female',
+        birthday: 2000-01-01,
+        email: 'test@email.com'
+    },
+    process: 'Post. Ocupacional'
+}
+```
+
+  </details>
+  
+  <details>
+  <summary><i>Prueba sin posicion de trabajo</i></summary>
+
+```typescript
+{
+  results: [
+        {
+            key: 'prueba-000001',
+            exam: {
+                type: {
+                    name: 'LABORATORIO CLINICO',
+                    key: 'exam-type-00001'
+                },
+                subtype: {
+                    name: 'ELECTROCARDIOGRAMA',
+                    key: 'exam-subtype-00001'
+                },
+                key: 'exam-000001',
+                name: 'COLESTEROL'
+            },
+            doctor: {
+                name: 'LUIS JAVIER',
+                lastname: 'PEREZ ASTUDILLO',
+                email: 'test@email.com',
+                dni: '1234567890'
+            }
+        }
+    ],
+    branch: {
+        key: 'branch-00001',
+        company: {
+            key: 'company-00001',
+            corporativeGroup: {
+                key: 'corporative-00001,
+                name: 'LA FAVORITA'
+            },
+            ruc: '1234567890001',
+            name: 'SUPERMAXI',
+            address: 'Av.Amazonas',
+            phone: '0999999999'
+        },
+        name: 'Av.Amazonas',
+        city: 'Quito'
+    },
+    patient: {
+        name: 'XIMENA ALEJANDRA',
+        lastname: 'GARCIA FEIJOO',
+        dni: '1234567890',
+        gender: 'female',
+        birthday: 2000-01-01,
+        email: 'test@email.com'
+    },
+    process: 'Post. Ocupacional'
+}
+```
+
+  </details>
+
+  <details>
+  <summary><i>Prueba sin <i>key</i></i></summary>
+
+```typescript
+{
+  results: [
+        {
+\            exam: {
+                type: {
+                    name: 'LABORATORIO CLINICO',
+                    key: 'exam-type-00001'
+                },
+                subtype: {
+                    name: 'ELECTROCARDIOGRAMA',
+                    key: 'exam-subtype-00001'
+                },
+                key: 'exam-000001',
+                name: 'COLESTEROL'
+            },
+            doctor: {
+                name: 'LUIS JAVIER',
+                lastname: 'PEREZ ASTUDILLO',
+                email: 'test@email.com',
+                dni: '1234567890'
+            }
+        }
+    ],
+    branch: {
+        key: 'branch-00001',
+        company: {
+            key: 'corporative-00001,
+            corporativeGroup: {
+                key: 'corporative-00001,
+                name: 'LA FAVORITA'
+            },
+            ruc: '1234567890001',
+            name: 'SUPERMAXI',
+            address: 'Av.Amazonas',
+            phone: '0999999999'
+        },
+        name: 'Av.Amazonas',
+        city: 'Quito'
+    },
+    jobPosition: {
+        key: 'jobposition-0001',
+        name: 'ABOGADO'
+    },
+    patient: {
+        name: 'XIMENA ALEJANDRA',
+        lastname: 'GARCIA FEIJOO',
+        dni: '1234567890',
+        gender: 'female',
+        birthday: 2000-01-01,
+        email: 'test@email.com'
+    },
+    process: 'Post. Ocupacional'
+}
+```
+
+  </details>
+  
+  <details>
+  <summary><i>Prueba sin <i>key</i> de empresa</i></summary>
+
+```typescript
+{
+  results: [
+        {
+            exam: {
+                type: {
+                    name: 'LABORATORIO CLINICO',
+                    key: 'exam-type-00001'
+                },
+                subtype: {
+                    name: 'ELECTROCARDIOGRAMA',
+                    key: 'exam-subtype-00001'
+                },
+                key: 'exam-000001',
+                name: 'COLESTEROL'
+            },
+            doctor: {
+                name: 'LUIS JAVIER',
+                lastname: 'PEREZ ASTUDILLO',
+                email: 'test@email.com',
+                dni: '1234567890'
+            }
+        }
+    ],
+    branch: {
+        key: 'branch-00001',
+        company: {
+            corporativeGroup: {
+                key: 'corporative-00001,
+                name: 'LA FAVORITA'
+            },
+            ruc: '1234567890001',
+            name: 'SUPERMAXI',
+            address: 'Av.Amazonas',
+            phone: '0999999999'
+        },
+        name: 'Av.Amazonas',
+        city: 'Quito'
+    },
+    jobPosition: {
+        key: 'jobposition-0001',
+        name: 'ABOGADO'
+    },
+    patient: {
+        name: 'XIMENA ALEJANDRA',
+        lastname: 'GARCIA FEIJOO',
+        dni: '1234567890',
+        gender: 'female',
+        birthday: 2000-01-01,
+        email: 'test@email.com'
+    },
+    process: 'Post. Ocupacional'
+}
+```
+
+  </details>
+  
+  <details>
+  <summary><i>Examen sin tipo y subtipo</i></summary>
+
+```typescript
+{
+  results: [
+        {
+            exam: {
+                key: 'exam-000001',
+                name: 'COLESTEROL'
+            },
+            doctor: {
+                name: 'LUIS JAVIER',
+                lastname: 'PEREZ ASTUDILLO',
+                email: 'test@email.com',
+                dni: '1234567890'
+            }
+        }
+    ],
+    branch: {
+        key: 'branch-00001',
+        company: {
+            corporativeGroup: {
+                key: 'corporative-00001,
+                name: 'LA FAVORITA'
+            },
+            ruc: '1234567890001',
+            name: 'SUPERMAXI',
+            address: 'Av.Amazonas',
+            phone: '0999999999'
+        },
+        name: 'Av.Amazonas',
+        city: 'Quito'
+    },
+    jobPosition: {
+        key: 'jobposition-0001',
+        name: 'ABOGADO'
+    },
+    patient: {
+        name: 'XIMENA ALEJANDRA',
+        lastname: 'GARCIA FEIJOO',
+        dni: '1234567890',
+        gender: 'female',
+        birthday: 2000-01-01,
+        email: 'test@email.com'
+    },
+    process: 'Post. Ocupacional'
+}
+```
+
+  </details>
+</details>
 
 ##### Response
 
