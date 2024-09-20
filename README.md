@@ -376,7 +376,6 @@ Crea una sucursal. Esta podrá ser utilizada para la creación y gestión de pac
   </details>
 </details>
 
-
 ##### Response
 
 ```typescript
@@ -1142,6 +1141,160 @@ Crea una orden médica.
 }
 ```
 
+#### `POST` /external/connection/medical/orders/_{source}_/_{key}_/file
+
+Carga un archivo pdf a la orden medica.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `multipart/form-data`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único de la orden médica.
+  - **Type**: _String_
+
+##### Request Body
+
+El cuerpo de la peticion es un formulario con los siguientes campos:
+
+| Subject | Type            | Mandatory |
+| ------- | --------------- | --------- |
+| file    | string($binary) | true      |
+
+##### Response
+
+```typescript
+{
+  id: number,
+  hasFile: boolean;
+  process: string,
+  createAt: Date,
+  mailStatus: boolean,
+  orderStatus: string,
+  client: {
+    dni: string,
+    name: string,
+    lastname: string,
+    managementId: number,
+    areaId: number,
+    email: [
+      {
+        id: number,
+        email: string,
+        default: boolean
+      }
+    ]
+  },
+  results: [
+    {
+      id: number,
+      examType: string,
+      examSubtype: string,
+      examName: string,
+      hasFile: boolean,
+      diseases: [
+        {
+          id: number,
+          diseaseId: string,
+          diseaseName: string,
+          diseaseGroupId: string,
+          diseaseGroupName: string,
+          diseaseCommentary: string
+        }
+      ],
+      report: {
+        id: number,
+        content: string,
+        hasFile: boolean
+      }
+    }
+  ]
+}
+```
+
+#### `POST` /external/connection/medical/orders/_{source}_/_{key}_/base64/file
+
+Permite enviar un archivo en base64 junto con su mimetype.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único de la orden médica.
+  - **Type**: _String_
+
+##### Request Body
+
+```typescript
+{
+  mimetype: string;
+  base64: string;
+}
+```
+
+##### Response
+
+```typescript
+{
+  id: number,
+  hasFile: boolean;
+  process: string,
+  createAt: Date,
+  mailStatus: boolean,
+  orderStatus: string,
+  client: {
+    dni: string,
+    name: string,
+    lastname: string,
+    managementId: number,
+    areaId: number,
+    email: [
+      {
+        id: number,
+        email: string,
+        default: boolean
+      }
+    ]
+  },
+  results: [
+    {
+      id: number,
+      examType: string,
+      examSubtype: string,
+      examName: string,
+      hasFile: boolean,
+      diseases: [
+        {
+          id: number,
+          diseaseId: string,
+          diseaseName: string,
+          diseaseGroupId: string,
+          diseaseGroupName: string,
+          diseaseCommentary: string
+        }
+      ],
+      report: {
+        id: number,
+        content: string,
+        hasFile: boolean
+      }
+    }
+  ]
+}
+```
+
+
 #### `POST` /external/connection/medical/order/_{source}_/_{key}_/results
 
 Crea una orden médica.
@@ -1167,8 +1320,8 @@ Crea una orden médica.
     - **key**: Identificador unico para cada examen
     - **name**: Nombre del examen
   - **type**: Dato opcional
-      - **name**: Nombre del tipo de examen
-      - **key**: Identificador unico del tipo de examen
+    - **name**: Nombre del tipo de examen
+    - **key**: Identificador unico del tipo de examen
   - **subtype**: Dato optional
     - **name**: Nombre del subtipo de examne
     - **key**: Identificador unico del subtipo de examen
@@ -1874,7 +2027,7 @@ Permite enviar un archivo en base64 junto con su mimetype.
 ##### Request Headers
 
 - `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `multipart/form-data`
+- `Content-Type`: `application/json`
 - `Accept`: `application/json`
 
 ##### URL Parameters
@@ -1885,9 +2038,6 @@ Permite enviar un archivo en base64 junto con su mimetype.
   - **Type**: _String_
 
 ##### Request Body
-
-- **mimetype**: Tipo de dato archivo que va a ser compartido.
-- **base64**: Archivo en base64.
 
 ```typescript
 {
