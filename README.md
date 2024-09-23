@@ -108,6 +108,8 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 
 </details>
 
+***
+
 #### `PATCH` /external/connection/corporative/groups/_{source}_/_{key}_
 
 Actualiza un grupo corporativo. Este grupo podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
@@ -195,6 +197,8 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 <div id='endpoint-companies'/>
 
 ### Empresas
+
+***
 
 #### `POST` /external/connection/company/_{source}_/_{key}_
 
@@ -294,6 +298,8 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 
 </details>
 
+***
+
 #### `PATCH` /external/connection/company/_{source}_/_{key}_
 
 Actualiza una empresa. Esta empresa podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
@@ -381,6 +387,8 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 <div id='endpoint-branch'/>
 
 ### Sucursal
+
+***
 
 #### `POST` /external/connection/branch/_{source}_/_{key}_
 
@@ -519,6 +527,8 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 
 </details>
 
+***
+
 #### `PATCH` /external/connection/branch/_{source}_/_{key}_
 
 Actualiza una sucursal. Esta sucursal podrá ser utilizada para la creación y gestión de pacientes y órdenes médicas.
@@ -592,6 +602,8 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 
 ### Puestos de trabajo
 
+***
+
 #### `POST` /external/connection/job/position/_{source}_/_{key}_
 
 Crea un puesto de trabajo. Esta podrá ser utilizada para la creación y gestión de puestos de trabajo.
@@ -657,6 +669,8 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 ```
 
 </details>
+
+***
 
 #### `PATCH` /external/connection/job/position/_{source}_/_{key}_
 
@@ -727,6 +741,8 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 <div id='endpoint-patient'/>
 
 ### Pacientes
+
+***
 
 #### `POST` /external/connection/patients/_{source}_
 
@@ -885,6 +901,8 @@ fetch(`${baseUrl}/external/connection/patients/${source}`, {
 
 </details>
 
+***
+
 #### `PATCH` /external/connection/patients/_{source}_/_{dni}_
 
 Actualiza un paciente.
@@ -968,6 +986,8 @@ fetch(`${baseUrl}/external/connection/patients/${source}/${dni}`, {
 
 ### Medicos
 
+***
+
 #### `POST` /external/connection/doctor
 
 Crea un doctor.
@@ -1038,6 +1058,8 @@ fetch(`${baseUrl}/external/connection/doctor`, {
 ```
 
 </details>
+
+***
 
 #### `PATCH` /external/connection/doctor/_{dni}_
 
@@ -1113,6 +1135,8 @@ fetch(`${baseUrl}/external/connection/doctor/${dni}`, {
 <div id='endpoint-exams'/>
 
 ### Examenes
+
+***
 
 #### `POST` /external/connection/exams/_{source}_/_{key}_
 
@@ -1249,6 +1273,8 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 
 </details>
 
+***
+
 #### `PATCH` /external/connection/exams/_{source}_/_{key}_
 
 Actualiza un examen de laboratorio. Este podrá ser utilizado para la creación y gestión de pacientes y órdenes médicas.
@@ -1317,6 +1343,8 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 <div id='endpoint-medical-order'/>
 
 ### Ordenes médicas
+
+***
 
 #### `GET` /external/connection/medical/orders/dni/_{dni}_
 
@@ -1409,6 +1437,8 @@ fetch(`${baseUrl}/external/connection/medical/orders/${dni}`, {
 
 </details>
 
+***
+
 #### `GET` /external/connection/medical/orders/_{source}_/_{key}_
 
 Obtiene una orden médica utilizando su identificador único y su pertenencia a la aplicación original.
@@ -1499,6 +1529,8 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 
 </details>
 
+***
+
 #### `GET` /external/connection/medical/orders/_{id}_
 
 Obtiene una orden médica utilizando su identificador único.
@@ -1585,6 +1617,8 @@ fetch(`${baseUrl}/external/connection/medical/orders/${id}`, {
 ```
 
 </details>
+
+***
 
 #### `POST` /external/connection/medical/orders/_{source}_/_{key}_
 
@@ -1866,6 +1900,8 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 
 </details>
 
+***
+
 #### `POST` /external/connection/medical/orders/_{source}_/_{key}_/file
 
 Carga un archivo pdf a la orden medica.
@@ -1970,6 +2006,8 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 ```
 
 </details>
+
+***
 
 #### `POST` /external/connection/medical/orders/_{source}_/_{key}_/base64/file
 
@@ -2079,6 +2117,8 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 ```
 
 </details>
+
+***
 
 #### `POST` /external/connection/medical/order/_{source}_/_{key}_/results
 
@@ -2621,6 +2661,8 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 
 </details>
 
+***
+
 #### `PATCH` /external/connection/medical/orders/_{source}_/_{key}_
 
 Actualiza una orden médica.
@@ -2730,6 +2772,8 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 
 ### Resultados médicos
 
+***
+
 #### `GET` /external/connection/medical/result/_{source}_/_{key}_
 
 Obtiene un resultado médico utilizando su identificador único y su pertenencia a la aplicación original.
@@ -2796,6 +2840,8 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 ```
 
 </details>
+
+***
 
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_
 
@@ -3349,6 +3395,8 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
   </details>
 </details>
 
+***
+
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_/base64/file
 
 Permite enviar un archivo en base64 junto con su mimetype.
@@ -3437,6 +3485,8 @@ fetch(
 
 </details>
 
+***
+
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_/file
 
 Permite subir un archivo PDF y asociarlo a un resultado médico.
@@ -3518,6 +3568,8 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 
 </details>
 
+***
+
 #### `PATCH` /external/connection/medical/result/_{source}_/_{key}_/file
 
 Permite subir un archivo PDF y asociarlo a un resultado médico.
@@ -3598,6 +3650,8 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 ```
 
 </details>
+
+***
 
 #### `PATCH` /external/connection/medical/result/_{id}_/file
 
@@ -3682,6 +3736,8 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/file`, {
 
 ### Archivos
 
+***
+
 #### `POST` /medical/file
 
 Obtiene un archivo médico específico basado en el identificador único proporcionado por Omega Sistema de Reporteria Medica.
@@ -3732,6 +3788,8 @@ fetch(`${baseUrl}/medical/file`, {
 Retorna un archivo en formato PDF
 
 </details>
+
+***
 
 #### `POST` /medical/file/multiple
 
