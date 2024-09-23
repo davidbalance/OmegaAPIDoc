@@ -94,7 +94,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -106,7 +106,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/corporative/groups/_{source}_/_{key}_
 
@@ -159,7 +159,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -190,7 +190,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-companies'/>
 
@@ -267,7 +267,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -292,7 +292,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/company/_{source}_/_{key}_
 
@@ -351,7 +351,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -376,7 +376,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-branch'/>
 
@@ -501,7 +501,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -517,7 +517,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/branch/_{source}_/_{key}_
 
@@ -570,7 +570,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -586,7 +586,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-job-position'/>
 
@@ -644,7 +644,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -656,7 +656,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/job/position/_{source}_/_{key}_
 
@@ -710,7 +710,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -722,7 +722,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-patient'/>
 
@@ -866,7 +866,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -883,7 +883,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/patients/_{source}_/_{dni}_
 
@@ -945,7 +945,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}/${dni}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -962,7 +962,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}/${dni}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-doctor'/>
 
@@ -1019,7 +1019,7 @@ fetch(`${baseUrl}/external/connection/doctor`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1037,7 +1037,7 @@ fetch(`${baseUrl}/external/connection/doctor`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/doctor/_{dni}_
 
@@ -1090,7 +1090,7 @@ fetch(`${baseUrl}/external/connection/doctor/${dni}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1108,7 +1108,7 @@ fetch(`${baseUrl}/external/connection/doctor/${dni}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-exams'/>
 
@@ -1235,7 +1235,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1247,7 +1247,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/exams/_{source}_/_{key}_
 
@@ -1300,7 +1300,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1312,7 +1312,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-medical-order'/>
 
@@ -1350,7 +1350,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${dni}`, {
 });
 ```
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1407,7 +1407,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${dni}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `GET` /external/connection/medical/orders/_{source}_/_{key}_
 
@@ -1444,7 +1444,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 });
 ```
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1497,7 +1497,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `GET` /external/connection/medical/orders/_{id}_
 
@@ -1531,7 +1531,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${id}`, {
 });
 ```
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1584,7 +1584,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${id}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `POST` /external/connection/medical/orders/_{source}_/_{key}_
 
@@ -1811,7 +1811,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1864,7 +1864,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `POST` /external/connection/medical/orders/_{source}_/_{key}_/file
 
@@ -1915,7 +1915,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -1969,7 +1969,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `POST` /external/connection/medical/orders/_{source}_/_{key}_/base64/file
 
@@ -2024,7 +2024,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -2078,7 +2078,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `POST` /external/connection/medical/order/_{source}_/_{key}_/results
 
@@ -2595,7 +2595,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -2619,7 +2619,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/medical/orders/_{source}_/_{key}_
 
@@ -2671,7 +2671,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -2724,7 +2724,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-medical-result'/>
 
@@ -2765,7 +2765,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 });
 ```
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -2795,7 +2795,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_
 
@@ -3316,7 +3316,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 
   </details>
 
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -3347,7 +3347,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_/base64/file
 
@@ -3405,7 +3405,7 @@ fetch(
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -3435,7 +3435,7 @@ fetch(
 }
 ```
 
-</details></br>
+</details>
 
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_/file
 
@@ -3486,7 +3486,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -3516,7 +3516,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/medical/result/_{source}_/_{key}_/file
 
@@ -3567,7 +3567,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -3597,7 +3597,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 }
 ```
 
-</details></br>
+</details>
 
 #### `PATCH` /external/connection/medical/result/_{id}_/file
 
@@ -3646,7 +3646,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/file`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
@@ -3676,7 +3676,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/file`, {
 }
 ```
 
-</details></br>
+</details>
 
 <div id='endpoint-medical-files'/>
 
@@ -3724,14 +3724,14 @@ fetch(`${baseUrl}/medical/file`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
 
 Retorna un archivo en formato PDF
 
-</details></br>
+</details>
 
 #### `POST` /medical/file/multiple
 
@@ -3784,14 +3784,14 @@ fetch(`${baseUrl}/medical/file`, {
 ```
 
   </details>
-</details></br>
+</details>
 
 <details>
   <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
 
 Retorna un archivo en formato PDF
 
-</details></br>
+</details>
 
 <div id='cities' />
 
