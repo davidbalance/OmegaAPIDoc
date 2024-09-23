@@ -62,7 +62,7 @@ Crea un grupo corporativo. Este grupo podrá ser utilizado para la creación y g
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre del grupo corporativo. Este es único.
 
@@ -97,7 +97,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -126,7 +126,7 @@ Actualiza un grupo corporativo. Este grupo podrá ser utilizado para la creació
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre del grupo corporativo. Este es único.
 
@@ -162,7 +162,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -214,7 +214,7 @@ Crea una empresa. Esta podrá ser utilizada para la creación y gestión de paci
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **corporativeGroup**:
   - **key**: Identificador único del grupo corporativo.
@@ -270,7 +270,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -312,7 +312,7 @@ Actualiza una empresa. Esta empresa podrá ser utilizada para la creación y ges
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre de la empresa. Este es único.
 - **address**: Dirección de la empresa.
@@ -354,7 +354,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -400,7 +400,7 @@ Crea una sucursal. Esta podrá ser utilizada para la creación y gestión de pac
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **company**:
   - **key**: Identificador único. Este dato es opcional
@@ -504,7 +504,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -537,7 +537,7 @@ Actualiza una sucursal. Esta sucursal podrá ser utilizada para la creación y g
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre de la sucursal. Este es único.
 
@@ -573,7 +573,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -610,7 +610,7 @@ Crea un puesto de trabajo. Esta podrá ser utilizada para la creación y gestió
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre del puesto de trabajo. Este es único.
 
@@ -647,7 +647,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -676,7 +676,7 @@ Actualiza una posicion de trabajo.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre de la posicion de trabajo. Este es único.
 
@@ -713,7 +713,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -744,7 +744,7 @@ Crea un paciente.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **email**: Correo electronico del paciente.
 - **jobPosition**: Dato opcional.
@@ -869,7 +869,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -903,7 +903,7 @@ Actualiza un paciente.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **gender**: Género del paciente. Debe colocarse `male` o `female`.
 - **birthday**: Fecha de cumpleaños del paciente. Formato: `YYYY-MM-DD`.
@@ -948,7 +948,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}/${dni}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -979,7 +979,7 @@ Crea un doctor.
 - `Accept`: `application/json`
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre del médico.
 - **lastname**: Apellido del médico.
@@ -1022,7 +1022,7 @@ fetch(`${baseUrl}/external/connection/doctor`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1055,7 +1055,7 @@ Actualiza un medico.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre del médico.
 - **lastname**: Apellido del médico.
@@ -1093,7 +1093,7 @@ fetch(`${baseUrl}/external/connection/doctor/${dni}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1130,7 +1130,7 @@ Crea un examen de laboratorio. Este podrá ser utilizado para la creación y ges
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre del examen médico. Este es único.
 - **type**: Datos Opcionales
@@ -1238,7 +1238,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1267,7 +1267,7 @@ Actualiza un examen de laboratorio. Este podrá ser utilizado para la creación 
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **name**: Nombre actualizado del examen médico. Debe ser único.
 
@@ -1303,7 +1303,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1334,7 +1334,7 @@ Obtiene un arreglo de órdenes médicas pertenecientes a un paciente, utilizando
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 ```typescript
 const baseUrl = "REEMPLAZAR POR EL DOMINIO O IP PROPORCIONADO";
@@ -1353,7 +1353,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${dni}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1427,7 +1427,7 @@ Obtiene una orden médica utilizando su identificador único y su pertenencia a 
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 ```typescript
 const baseUrl = "REEMPLAZAR POR EL DOMINIO O IP PROPORCIONADO";
@@ -1447,7 +1447,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1515,7 +1515,7 @@ Obtiene una orden médica utilizando su identificador único.
   - **Type**: _Number_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 ```typescript
 const baseUrl = "REEMPLAZAR POR EL DOMINIO O IP PROPORCIONADO";
@@ -1534,7 +1534,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${id}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1604,7 +1604,7 @@ Crea una orden médica.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **branch**:
   - **company**:
@@ -1814,7 +1814,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1884,7 +1884,7 @@ Carga un archivo pdf a la orden medica.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 El cuerpo de la peticion es un formulario con los siguientes campos:
 
@@ -1918,7 +1918,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -1989,7 +1989,7 @@ Permite enviar un archivo en base64 junto con su mimetype.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **mimetype**: Tipo de dato del archivo a enviar
 - **base64**: Archivo en base64
@@ -2027,7 +2027,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -2098,7 +2098,7 @@ Crea una orden médica.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **results**: Arreglo de pruebas/examenes
   - **key**: Identificador unico para cada resultado
@@ -2598,7 +2598,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -2639,7 +2639,7 @@ Actualiza una orden médica.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **process**: Nombre actualizado del proceso médico.
 
@@ -2674,7 +2674,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -2748,7 +2748,7 @@ Obtiene un resultado médico utilizando su identificador único y su pertenencia
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 ```typescript
 const baseUrl = "REEMPLAZAR POR EL DOMINIO O IP PROPORCIONADO";
@@ -2768,7 +2768,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -2813,7 +2813,7 @@ Crea un resultado médico utilizando la aplicación de origen especificada.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 El cuerpo de la peticion es un formulario con los siguientes campos:
 
@@ -3319,7 +3319,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -3367,7 +3367,7 @@ Permite enviar un archivo en base64 junto con su mimetype.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **mimetype**: Tipo de dato del archivo a enviar
 - **base64**: Archivo en base64
@@ -3408,7 +3408,7 @@ fetch(
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -3455,7 +3455,7 @@ Permite subir un archivo PDF y asociarlo a un resultado médico.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **file**: Archivo PDF que se desea subir para adjuntarlo al resultado médico.
 
@@ -3489,7 +3489,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -3536,7 +3536,7 @@ Permite subir un archivo PDF y asociarlo a un resultado médico.
   - **Type**: _String_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **file**: Archivo PDF que se desea subir para adjuntarlo al resultado médico.
 
@@ -3570,7 +3570,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -3615,7 +3615,7 @@ Permite subir un archivo PDF y asociarlo a un resultado médico.
   - **Type**: _Number_
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **file**: Archivo PDF que se desea subir para adjuntarlo al resultado médico.
 
@@ -3649,7 +3649,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/file`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 ```typescript
 {
@@ -3691,7 +3691,7 @@ Obtiene un archivo médico específico basado en el identificador único proporc
 - `Content-Type`: `application/json`
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **id**: Identificador único de Omega Sistema de Reporteria Medica para el resultado o reporte.
 - **type**: Tipo del archivo requerido. Debe ser `result` o `report`.
@@ -3727,7 +3727,7 @@ fetch(`${baseUrl}/medical/file`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 Retorna un archivo en formato PDF
 
@@ -3742,7 +3742,7 @@ Obtiene varios archivos médicos específicos basados en los identificadores ún
 - `Content-Type`: `application/json`
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Request</b></summary></br>
+  <summary><b>Request</b></summary></br>
 
 - **files**: Lista de objetos que especifican los archivos médicos requeridos.
   - **id**: Identificador único de Omega Sistema de Reporteria Medica para el resultado o reporte.
@@ -3787,7 +3787,7 @@ fetch(`${baseUrl}/medical/file`, {
 </details>
 
 <details>
-  <summary><b style='font-size: 1.25rem'>Response</b></summary></br>
+  <summary><b>Response</b></summary></br>
 
 Retorna un archivo en formato PDF
 
