@@ -108,7 +108,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/corporative/groups/_{source}_/_{key}_
 
@@ -198,7 +198,7 @@ fetch(`${baseUrl}/external/connection/corporative/groups/${source}/${key}`, {
 
 ### Empresas
 
-***
+---
 
 #### `POST` /external/connection/company/_{source}_/_{key}_
 
@@ -298,7 +298,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/company/_{source}_/_{key}_
 
@@ -388,7 +388,7 @@ fetch(`${baseUrl}/external/connection/company/${source}/${key}`, {
 
 ### Sucursal
 
-***
+---
 
 #### `POST` /external/connection/branch/_{source}_/_{key}_
 
@@ -527,7 +527,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/branch/_{source}_/_{key}_
 
@@ -602,7 +602,7 @@ fetch(`${baseUrl}/external/connection/branch/${source}/${key}`, {
 
 ### Puestos de trabajo
 
-***
+---
 
 #### `POST` /external/connection/job/position/_{source}_/_{key}_
 
@@ -670,7 +670,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/job/position/_{source}_/_{key}_
 
@@ -742,7 +742,7 @@ fetch(`${baseUrl}/external/connection/job/position/${source}/${key}`, {
 
 ### Pacientes
 
-***
+---
 
 #### `POST` /external/connection/patients/_{source}_
 
@@ -901,7 +901,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/patients/_{source}_/_{dni}_
 
@@ -986,7 +986,7 @@ fetch(`${baseUrl}/external/connection/patients/${source}/${dni}`, {
 
 ### Medicos
 
-***
+---
 
 #### `POST` /external/connection/doctor
 
@@ -1059,7 +1059,7 @@ fetch(`${baseUrl}/external/connection/doctor`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/doctor/_{dni}_
 
@@ -1136,7 +1136,7 @@ fetch(`${baseUrl}/external/connection/doctor/${dni}`, {
 
 ### Examenes
 
-***
+---
 
 #### `POST` /external/connection/exams/_{source}_/_{key}_
 
@@ -1273,7 +1273,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/exams/_{source}_/_{key}_
 
@@ -1344,7 +1344,7 @@ fetch(`${baseUrl}/external/connection/exams/${source}/${key}`, {
 
 ### Ordenes médicas
 
-***
+---
 
 #### `GET` /external/connection/medical/orders/dni/_{dni}_
 
@@ -1437,7 +1437,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${dni}`, {
 
 </details>
 
-***
+---
 
 #### `GET` /external/connection/medical/orders/_{source}_/_{key}_
 
@@ -1529,7 +1529,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 
 </details>
 
-***
+---
 
 #### `GET` /external/connection/medical/orders/_{id}_
 
@@ -1618,7 +1618,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${id}`, {
 
 </details>
 
-***
+---
 
 #### `POST` /external/connection/medical/orders/_{source}_/_{key}_
 
@@ -1900,225 +1900,7 @@ fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
 
 </details>
 
-***
-
-#### `POST` /external/connection/medical/orders/_{source}_/_{key}_/file
-
-Carga un archivo pdf a la orden medica.
-
-##### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `multipart/form-data`
-- `Accept`: `application/json`
-
-##### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-- `key`: Identificador único de la orden médica.
-  - **Type**: _String_
-
-<details>
-  <summary><b>Request</b></summary></br>
-
-El cuerpo de la peticion es un formulario con los siguientes campos:
-
-| Subject | Type            | Mandatory |
-| ------- | --------------- | --------- |
-| file    | string($binary) | true      |
-
-  <details>
-    <summary><b>Ejemplo</b></summary>
-
-```typescript
-const baseUrl = "REEMPLAZAR POR EL DOMINIO O IP PROPORCIONADO";
-const source = "omega-app"; // REEMPLAZAR POR EL NOMBRE DE SU APLICACION
-const key = "01"; // REEMPLAZAR POR LA LLAVE CON LA QUE IDENTIFICARAN SUS DATOS EN LA APLICACION
-
-const form = new FormData();
-form.append("file", file);
-
-fetch(`${baseUrl}/external/connection/medical/orders/${source}/${key}`, {
-  method: "POST",
-  body: form,
-  headers: {
-    "x-api-key": "my-sample-api-key",
-    "content-type": "multipart/form-data",
-    accept: "application/json",
-  },
-});
-```
-
-  </details>
-</details>
-
-<details>
-  <summary><b>Response</b></summary></br>
-
-```typescript
-{
-  id: number,
-  hasFile: boolean;
-  process: string,
-  createAt: Date,
-  mailStatus: boolean,
-  orderStatus: string,
-  client: {
-    dni: string,
-    name: string,
-    lastname: string,
-    managementId: number,
-    areaId: number,
-    email: [
-      {
-        id: number,
-        email: string,
-        default: boolean
-      }
-    ]
-  },
-  results: [
-    {
-      id: number,
-      examType: string,
-      examSubtype: string,
-      examName: string,
-      hasFile: boolean,
-      diseases: [
-        {
-          id: number,
-          diseaseId: string,
-          diseaseName: string,
-          diseaseGroupId: string,
-          diseaseGroupName: string,
-          diseaseCommentary: string
-        }
-      ],
-      report: {
-        id: number,
-        content: string,
-        hasFile: boolean
-      }
-    }
-  ]
-}
-```
-
-</details>
-
-***
-
-#### `POST` /external/connection/medical/orders/_{source}_/_{key}_/base64/file
-
-Permite enviar un archivo en base64 junto con su mimetype.
-
-##### Request Headers
-
-- `x-api-key`: Requiere un API key. Este será un string.
-- `Content-Type`: `application/json`
-- `Accept`: `application/json`
-
-##### URL Parameters
-
-- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
-  - **Type**: _String_
-- `key`: Identificador único de la orden médica.
-  - **Type**: _String_
-
-<details>
-  <summary><b>Request</b></summary></br>
-
-- **mimetype**: Tipo de dato del archivo a enviar
-- **base64**: Archivo en base64
-
-```typescript
-{
-  mimetype: string,
-  base64: string
-}
-```
-
-  <details>
-    <summary><b>Ejemplo</b></summary>
-
-```typescript
-const baseUrl = "REEMPLAZAR POR EL DOMINIO O IP PROPORCIONADO";
-const source = "omega-app"; // REEMPLAZAR POR EL NOMBRE DE SU APLICACION
-const key = "01"; // REEMPLAZAR POR LA LLAVE CON LA QUE IDENTIFICARAN SUS DATOS EN LA APLICACION
-
-fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
-  method: "POST",
-  body: {
-    mimetype: "application/pdf",
-    base64: "my-base64-file",
-  },
-  headers: {
-    "x-api-key": "my-sample-api-key",
-    "content-type": "application/json",
-    accept: "application/json",
-  },
-});
-```
-
-  </details>
-</details>
-
-<details>
-  <summary><b>Response</b></summary></br>
-
-```typescript
-{
-  id: number,
-  hasFile: boolean;
-  process: string,
-  createAt: Date,
-  mailStatus: boolean,
-  orderStatus: string,
-  client: {
-    dni: string,
-    name: string,
-    lastname: string,
-    managementId: number,
-    areaId: number,
-    email: [
-      {
-        id: number,
-        email: string,
-        default: boolean
-      }
-    ]
-  },
-  results: [
-    {
-      id: number,
-      examType: string,
-      examSubtype: string,
-      examName: string,
-      hasFile: boolean,
-      diseases: [
-        {
-          id: number,
-          diseaseId: string,
-          diseaseName: string,
-          diseaseGroupId: string,
-          diseaseGroupName: string,
-          diseaseCommentary: string
-        }
-      ],
-      report: {
-        id: number,
-        content: string,
-        hasFile: boolean
-      }
-    }
-  ]
-}
-```
-
-</details>
-
-***
+---
 
 #### `POST` /external/connection/medical/order/_{source}_/_{key}_/results
 
@@ -2661,7 +2443,107 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 
 </details>
 
-***
+---
+
+#### `POST` /external/connection/medical/order/_{source}_/_{key}_/results/laboratorio/clinico/base64
+
+Permite enviar un archivo en base64 junto con su mimetype.
+
+##### Request Headers
+
+- `x-api-key`: Requiere un API key. Este será un string.
+- `Content-Type`: `application/json`
+- `Accept`: `application/json`
+
+##### URL Parameters
+
+- `source`: El nombre de la aplicación de origen. Debe estar en minúsculas y los espacios deben ser reemplazados por guión medio.
+  - **Type**: _String_
+- `key`: Identificador único de la orden médica.
+  - **Type**: _String_
+
+<details>
+  <summary><b>Request</b></summary></br>
+
+- **doctor**: Medico que creo la orden medica
+  - **name**: Nombre del medico
+  - **lastname**: Apellido del medico
+  - **email**: Correo electronico del medico
+  - **dni**: DNI del medico
+- **mimetype**: Tipo de dato del archivo a enviar
+- **base64**: Archivo en base64
+
+```typescript
+{
+  doctor: {
+    name: string,
+    lastname: string,
+    email: string,
+    dni: string
+  },
+  mimetype: string,
+  base64: string
+}
+```
+
+  <details>
+    <summary><b>Ejemplo</b></summary>
+
+```typescript
+const baseUrl = "REEMPLAZAR POR EL DOMINIO O IP PROPORCIONADO";
+const source = "omega-app"; // REEMPLAZAR POR EL NOMBRE DE SU APLICACION
+const key = "01"; // REEMPLAZAR POR LA LLAVE DE LA ORDEN MEDICA CON LA QUE IDENTIFICAN SUS DATOS EN LA APLICACION
+
+fetch(
+  `${baseUrl}/external/connection/medical/order/${source}/${key}/laboratorio/clinico/base64`,
+  {
+    method: "POST",
+    body: {
+      doctor: {
+        name: "JUAN LEONARDO",
+        lastname: "PEREZ ALBUJA",
+        email: "test@email.com",
+        dni: "1234567890",
+      },
+      mimetype: "application/pdf",
+      base64: "my-base64-file",
+    },
+    headers: {
+      "x-api-key": "my-sample-api-key",
+      "content-type": "application/json",
+      accept: "application/json",
+    },
+  }
+);
+```
+
+  </details>
+</details>
+
+<details>
+  <summary><b>Response</b></summary></br>
+
+```typescript
+{
+  id: number,
+  results: [
+    {
+      id: number,
+      examType: string,
+      examSubtype:  string,
+      examName: string,
+      hasFile: boolean
+    }
+  ],
+  process: string,
+  createAt: Date,
+  orderStatus: "created" | "validated"
+}
+```
+
+</details>
+
+---
 
 #### `PATCH` /external/connection/medical/orders/_{source}_/_{key}_
 
@@ -2772,7 +2654,7 @@ fetch(`${baseUrl}/external/connection/medical/order/${source}/${key}`, {
 
 ### Resultados médicos
 
-***
+---
 
 #### `GET` /external/connection/medical/result/_{source}_/_{key}_
 
@@ -2841,7 +2723,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
 
 </details>
 
-***
+---
 
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_
 
@@ -3395,7 +3277,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}`, {
   </details>
 </details>
 
-***
+---
 
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_/base64/file
 
@@ -3485,7 +3367,7 @@ fetch(
 
 </details>
 
-***
+---
 
 #### `POST` /external/connection/medical/result/_{source}_/_{key}_/file
 
@@ -3568,7 +3450,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/medical/result/_{source}_/_{key}_/file
 
@@ -3651,7 +3533,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/${key}/file`, {
 
 </details>
 
-***
+---
 
 #### `PATCH` /external/connection/medical/result/_{id}_/file
 
@@ -3736,7 +3618,7 @@ fetch(`${baseUrl}/external/connection/medical/result/${source}/file`, {
 
 ### Archivos
 
-***
+---
 
 #### `POST` /medical/file
 
@@ -3755,7 +3637,7 @@ Obtiene un archivo médico específico basado en el identificador único proporc
 ```typescript
 {
   id: number,
-  type: "report" | "result" | "order"
+  type: "report" | "result"
 }
 ```
 
@@ -3770,7 +3652,7 @@ fetch(`${baseUrl}/medical/file`, {
   method: "POST",
   body: {
     id: 1 // IDENTIFICADOR QUE LA APLICACION ENTREGA CUANDO CREA UNA ORDEN MEDICA
-    type: "order",
+    type: "result",
   },
   headers: {
     "x-api-key": "my-sample-api-key",
@@ -3789,7 +3671,7 @@ Retorna un archivo en formato PDF
 
 </details>
 
-***
+---
 
 #### `POST` /medical/file/multiple
 
@@ -3830,7 +3712,7 @@ fetch(`${baseUrl}/medical/file`, {
     files: [
       {
         id: 1 // IDENTIFICADOR QUE LA APLICACION ENTREGA CUANDO CREA UNA ORDEN MEDICA
-        type: "order",
+        type: "result",
       },
     ],
   },
