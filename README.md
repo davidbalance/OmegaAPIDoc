@@ -41,7 +41,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/exam-type/{key}", {
+fetch("http://<ip>:<port>/external/exam-type/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -75,7 +75,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/exam-type", {
+fetch("http://<ip>:<port>/external/exam-type", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -109,7 +109,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/exam-subtype/{key}", {
+fetch("http://<ip>:<port>/external/exam-subtype/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -146,7 +146,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/exam-subtype", {
+fetch("http://<ip>:<port>/external/exam-subtype", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -182,7 +182,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/exam/{key}", {
+fetch("http://<ip>:<port>/external/exam/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -221,7 +221,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/exam", {
+fetch("http://<ip>:<port>/external/exam", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -267,7 +267,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/corporative/{key}", {
+fetch("http://<ip>:<port>/external/corporative/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -301,7 +301,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/corporative", {
+fetch("http://<ip>:<port>/external/corporative", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -339,7 +339,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/company/{key}", {
+fetch("http://<ip>:<port>/external/company/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -379,7 +379,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/company", {
+fetch("http://<ip>:<port>/external/company", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -419,7 +419,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/branch/{key}", {
+fetch("http://<ip>:<port>/external/branch/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -462,7 +462,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/branch", {
+fetch("http://<ip>:<port>/external/branch", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -511,7 +511,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/patient/{patientDni}", {
+fetch("http://<ip>:<port>/external/patient/{patientDni}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -552,7 +552,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/patient", {
+fetch("http://<ip>:<port>/external/patient", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -592,7 +592,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/medical-order/{key}", {
+fetch("http://<ip>:<port>/external/medical-order/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -643,7 +643,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/medical-order", {
+fetch("http://<ip>:<port>/external/medical-order", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -699,7 +699,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/medical-test/{key}", {
+fetch("http://<ip>:<port>/external/medical-test/{key}", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -724,7 +724,7 @@ binary data, used to describe files
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/medical-test/{key}/result", {
+fetch("http://<ip>:<port>/external/medical-test/{key}/result", {
   headers: {
     "x-omega-key": "<your-key>",
   },
@@ -781,7 +781,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/medical-test", {
+fetch("http://<ip>:<port>/external/medical-test", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -842,7 +842,7 @@ Ok
 **Uso**
 
 ```javascript
-fetch("http://localhost:3001/external/medical-test/{key}/result/base64", {
+fetch("http://<ip>:<port>/external/medical-test/{key}/result/base64", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
@@ -879,7 +879,7 @@ Ok
 ```javascript
 const form = new FormData();
 form.append("file", "<your-file>");
-fetch("http://localhost:3001/external/medical-test/{key}/result/file", {
+fetch("http://<ip>:<port>/external/medical-test/{key}/result/file", {
   method: "POST",
   headers: {
     "x-omega-key": "<your-key>",
