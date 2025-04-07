@@ -839,7 +839,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:3001",
+			"value": "http://<ip>:<port>",
 			"type": "string"
 		},
 		{
@@ -849,7 +849,7 @@
 		},
 		{
 			"key": "apiKeyValue",
-			"value": "dac3472e-8e55-4a20-9e40-54f43aaa5e12",
+			"value": "<your-key>",
 			"type": "string"
 		}
 	]
