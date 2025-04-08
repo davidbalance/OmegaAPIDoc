@@ -817,6 +817,104 @@ fetch("http://<ip>:<port>/external/medical-test", {
 });
 ```
 
+#### `POST` /external/medical-test/many
+
+**Headers**
+x-omega-key - _string_ - <span style="color: red;">required</span>
+
+**Body** -> _application/json_
+
+```typescript
+{
+  patientGender: "male" | "female";
+  patientDni: string; // Length of 10
+  patientName: string;
+  patientLastname: string;
+  patientEmail: string;
+  patientBirthday: Date;
+  corporativeName: string;
+  companyRuc: string;
+  companyName: string;
+  branchName: string;
+  doctorDni: string | undefined | null; // Optional - Default: '0000000000'
+  doctorFullname: string | undefined | null; // Optional - Default: 'NO ESPECIFICO'
+  orderKey: string;
+  orderProcess: string;
+  orderYear: number; // Min value: 1900
+  branchKey: string | undefined | null; // Optional
+  companyKey: string | undefined | null; // Optional
+  corporativeKey: string | undefined | null; // Optional
+  tests: Array<{
+    testKey: string;
+    examName: string;
+    examSubtype: string | undefined | null; // Optional - Default: Default
+    examType: string | undefined | null; // Optional - Default: Default
+    examTypeKey: string | undefined | null; // Optional
+    examSubtypeKey: string | undefined | null; // Optional
+    examKey: string | undefined | null; // Optional
+  }>;
+}
+```
+
+**Responses** -> _application/json_
+
+```typescript
+{
+  patientDni: string;
+  orderId: string;
+  orderExternalKey: string;
+  orderExternalOwner: string;
+  tests: Array<{
+    testId: string;
+    testExternalKey: string;
+    testExternalOwner: string;
+  }>;
+}
+```
+
+**Uso**
+
+```javascript
+fetch("http://<ip>:<port>/external/medical-test/many", {
+  method: "POST",
+  headers: {
+    "X-Omega-Key": "",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    patientGender: "male",
+    patientDni: "",
+    patientName: "",
+    patientLastname: "",
+    patientEmail: "",
+    patientBirthday: "",
+    corporativeName: "",
+    companyRuc: "",
+    companyName: "",
+    branchName: "",
+    doctorDni: "0000000000",
+    doctorFullname: "NO ESPECIFICO",
+    orderKey: "",
+    orderProcess: "",
+    orderYear: 1,
+    branchKey: "",
+    companyKey: "",
+    corporativeKey: "",
+    tests: [
+      {
+        testKey: "",
+        examName: "",
+        examSubtype: "Default",
+        examType: "Default",
+        examTypeKey: "",
+        examSubtypeKey: "",
+        examKey: "",
+      },
+    ],
+  }),
+});
+```
+
 #### `POST` /external/medical-test/:key/result/base64
 
 **Path Parameters**

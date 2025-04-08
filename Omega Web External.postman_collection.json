@@ -729,6 +729,39 @@
 					"response": []
 				},
 				{
+					"name": "Test Many",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "{{apiKeyName}}",
+								"value": "{{apiKeyValue}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patientGender\": \"male\",\r\n    \"patientDni\": \"0000000100\",\r\n    \"patientName\": \"Test patient\",\r\n    \"patientLastname\": \"Test lastname\",\r\n    \"patientEmail\": \"sample@email.com\",\r\n    \"patientBirthday\": \"2000-01-01T00:00:00.000Z\",\r\n    \"corporativeName\": \"Test corporative\",\r\n    \"companyRuc\": \"0000000100001\",\r\n    \"companyName\": \"Test company\",\r\n    \"branchName\": \"Test branch\",\r\n    \"doctorDni\": \"0000000100\",\r\n    \"doctorFullname\": \"Doctor\",\r\n    \"orderKey\": \"order-key-1\",\r\n    \"orderProcess\": \"Post-Ocupacional\",\r\n    \"orderYear\": 2022,\r\n    \"tests\": [\r\n        {\r\n            \"testKey\": \"test-key-1\",\r\n            \"examName\": \"test-exam-1\",\r\n            \"examSubtype\": \"test-exam-subtype-1\",\r\n            \"examType\": \"test-exam-type-1\",\r\n            \"examTypeKey\": \"type-key-1\"\r\n        },\r\n        {\r\n            \"testKey\": \"test-key-2\",\r\n            \"examName\": \"test-exam-2\",\r\n            \"examSubtype\": \"test-exam-subtype-2\",\r\n            \"examType\": \"test-exam-type-2\",\r\n            \"examTypeKey\": \"type-key-2\"\r\n        },\r\n        {\r\n            \"testKey\": \"test-key-3\",\r\n            \"examName\": \"test-exam-3\",\r\n            \"examSubtype\": \"test-exam-subtype-3\",\r\n            \"examType\": \"test-exam-type-3\",\r\n            \"examTypeKey\": \"type-key-3\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medical-test/many",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medical-test",
+								"many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Test Base64",
 					"request": {
 						"method": "POST",
@@ -839,7 +872,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://<ip>:<port>",
+			"value": "http://<ip>:<port>/external",
 			"type": "string"
 		},
 		{
