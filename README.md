@@ -706,6 +706,42 @@ fetch("http://<ip>:<port>/external/medical-test/{key}", {
 });
 ```
 
+#### `GET` /external/medical-test/_:orderKey_/many
+
+**Path Parameters**
+orderKey - _string_ - <span style="color: red;">required</span>
+
+**Headers**
+x-omega-key - _string_ - <span style="color: red;">required</span>
+
+**Responses** -> _application/json_
+
+```typescript
+[
+    {
+        testId: string;
+        testCheck: boolean;
+        resultHasFile: boolean;
+        reportHasContent: boolean;
+        orderId: string;
+        examName: string;
+        examSubtype: string;
+        examType: string;
+        diseases: string[];
+    }
+]
+```
+
+**Uso**
+
+```javascript
+fetch('http://localhost:3001/external/medical-test/{orderKey}/many', {
+    headers: {
+        "x-omega-key": "<your-key>",
+    }
+});
+```
+
 #### `GET` /external/medical-test/_:key_/result
 
 **Path Parameters**
