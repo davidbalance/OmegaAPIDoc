@@ -43,7 +43,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/exam-type/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -76,7 +76,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/exam-type");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"typeKey\": \"\",\n  \"typeName\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -105,7 +105,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/exam-subtype/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -141,7 +141,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/exam-subtype");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"typeKey\": \"\",\n  \"typeName\": \"\",\n  \"subtypeKey\": \"\",\n  \"subtypeName\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -170,7 +170,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/exam/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -208,7 +208,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/exam");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"typeKey\": \"\",\n  \"typeName\": \"\",\n  \"subtypeKey\": \"\",\n  \"subtypeName\": \"\",\n  \"examKey\": \"\",\n  \"examName\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -245,7 +245,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/corporative/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -278,7 +278,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/corporative");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"corporativeKey\": \"\",\n  \"corporativeName\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -311,7 +311,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/company/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -350,7 +350,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/company");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"corporativeKey\": \"\",\n  \"corporativeName\": \"\",\n  \"companyKey\": \"\",\n  \"companyName\": \"\",\n  \"companyRuc\": \"\",\n  \"companyAddress\": \"\",\n  \"companyPhone\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -380,7 +380,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/branch/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -422,7 +422,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/branch");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"companyPhone\": \"\",\n  \"corporativeKey\": \"\",\n  \"corporativeName\": \"\",\n  \"companyKey\": \"\",\n  \"companyName\": \"\",\n  \"companyRuc\": \"\",\n  \"companyAddress\": \"\",\n  \"cityId\": 1,\n  \"branchKey\": \"\",\n  \"branchName\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -458,7 +458,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/patient/%7BpatientDni%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -498,7 +498,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/patient");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"patientGender\": \"male\",\n  \"patientDni\": \"\",\n  \"patientName\": \"\",\n  \"patientLastname\": \"\",\n  \"patientEmail\": \"\",\n  \"patientBirthday\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -529,7 +529,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-order/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -579,7 +579,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-order");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"patientGender\": \"male\",\n  \"patientDni\": \"\",\n  \"patientName\": \"\",\n  \"patientLastname\": \"\",\n  \"patientEmail\": \"\",\n  \"patientBirthday\": \"\",\n  \"corporativeName\": \"\",\n  \"companyRuc\": \"\",\n  \"companyName\": \"\",\n  \"branchName\": \"\",\n  \"doctorDni\": \"0000000000\",\n  \"doctorFullname\": \"NO ESPECIFICO\",\n  \"orderKey\": \"\",\n  \"orderProcess\": \"\",\n  \"orderYear\": 1,\n  \"branchKey\": \"\",\n  \"companyKey\": \"\",\n  \"corporativeKey\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -614,7 +614,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-test/%7Bkey%7D");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -649,7 +649,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-test/%7BorderKey%7D/many");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -673,7 +673,7 @@ binary data, used to describe files
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-test/%7Bkey%7D/result");
 var request = new RestRequest(Method.GET);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 IRestResponse response = client.Execute(request);
 ```
 
@@ -729,7 +729,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-test");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"patientGender\": \"male\",\n  \"patientDni\": \"\",\n  \"patientName\": \"\",\n  \"patientLastname\": \"\",\n  \"patientEmail\": \"\",\n  \"patientBirthday\": \"\",\n  \"corporativeName\": \"\",\n  \"companyRuc\": \"\",\n  \"companyName\": \"\",\n  \"branchName\": \"\",\n  \"doctorDni\": \"0000000000\",\n  \"doctorFullname\": \"NO ESPECIFICO\",\n  \"orderKey\": \"\",\n  \"orderProcess\": \"\",\n  \"orderYear\": 1,\n  \"branchKey\": \"\",\n  \"companyKey\": \"\",\n  \"corporativeKey\": \"\",\n  \"testKey\": \"\",\n  \"examName\": \"\",\n  \"examSubtype\": \"Default\",\n  \"examType\": \"Default\",\n  \"examTypeKey\": \"\",\n  \"examSubtypeKey\": \"\",\n  \"examKey\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -795,7 +795,7 @@ x-omega-key - _string_ - <span style="color: red;">required</span>
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-test/many");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"patientGender\": \"male\",\n  \"patientDni\": \"\",\n  \"patientName\": \"\",\n  \"patientLastname\": \"\",\n  \"patientEmail\": \"\",\n  \"patientBirthday\": \"\",\n  \"corporativeName\": \"\",\n  \"companyRuc\": \"\",\n  \"companyName\": \"\",\n  \"branchName\": \"\",\n  \"doctorDni\": \"0000000000\",\n  \"doctorFullname\": \"NO ESPECIFICO\",\n  \"orderKey\": \"\",\n  \"orderProcess\": \"\",\n  \"orderYear\": 1,\n  \"branchKey\": \"\",\n  \"companyKey\": \"\",\n  \"corporativeKey\": \"\",\n  \"tests\": [\n    {\n      \"testKey\": \"\",\n      \"examName\": \"\",\n      \"examSubtype\": \"Default\",\n      \"examType\": \"Default\",\n      \"examTypeKey\": \"\",\n      \"examSubtypeKey\": \"\",\n      \"examKey\": \"\"\n    }\n  ]\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -828,7 +828,7 @@ Ok
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-test/%7Bkey%7D/result/base64");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "application/json");
 request.AddParameter("application/json", "{\n  \"base64\": \"\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
@@ -859,7 +859,7 @@ Ok
 ```csharp
 var client = new RestClient("http://<ip>:<port>/external/medical-test/%7Bkey%7D/result/file");
 var request = new RestRequest(Method.POST);
-request.AddHeader("x-omega-key", "");
+request.AddHeader("x-omega-key", "<your-key>");
 request.AddHeader("Content-Type", "multipart/form-data");
 request.AddParameter("multipart/form-data", "{\"file\":\"\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
